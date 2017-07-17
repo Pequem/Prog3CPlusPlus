@@ -16,9 +16,10 @@ namespace model {
     Veiculo::Veiculo(){
         
     }
-    Veiculo::Veiculo(string sigla, string nome, double fatorDeImpacto, string issn){
+    Veiculo::Veiculo(string sigla, string nome, string tipo, double fatorDeImpacto, string issn){
         this->sigla = sigla;
         this->nome = nome;
+		this->tipo = tipo;
         this->fatorDeImpactor = fatorDeImpacto;
         this->issn = issn;
     }

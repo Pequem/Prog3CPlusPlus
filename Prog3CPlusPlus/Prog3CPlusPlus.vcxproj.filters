@@ -13,111 +13,129 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Arquivos de Cabeçalho\Model">
+      <UniqueIdentifier>{7b615728-d01b-4240-8937-8e2d449bd302}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\Util">
+      <UniqueIdentifier>{975ff8c1-4e63-4a64-b48a-cbdfb19ddf71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Origem\Model">
+      <UniqueIdentifier>{eca100f0-206e-4a4e-9cc8-8652140e8659}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Origem\Util">
+      <UniqueIdentifier>{def9026a-28dd-43fb-859f-fe693a321914}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Conferencia.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
-    </ClInclude>
     <ClInclude Include="Controller.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="DateUtils.h">
+    <ClInclude Include="CustomException.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="Docente.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
-    </ClInclude>
-    <ClInclude Include="NumberUtils.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
-    </ClInclude>
-    <ClInclude Include="NumPunctPTBR.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
+    <ClInclude Include="Conferencia.h">
+      <Filter>Arquivos de Cabeçalho\Model</Filter>
     </ClInclude>
     <ClInclude Include="Periodico.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
+      <Filter>Arquivos de Cabeçalho\Model</Filter>
     </ClInclude>
     <ClInclude Include="Pontuacao.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
+      <Filter>Arquivos de Cabeçalho\Model</Filter>
     </ClInclude>
     <ClInclude Include="Publicacao.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
+      <Filter>Arquivos de Cabeçalho\Model</Filter>
     </ClInclude>
     <ClInclude Include="Qualificacao.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
+      <Filter>Arquivos de Cabeçalho\Model</Filter>
     </ClInclude>
     <ClInclude Include="Qualis.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
+      <Filter>Arquivos de Cabeçalho\Model</Filter>
     </ClInclude>
     <ClInclude Include="Regras.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
+      <Filter>Arquivos de Cabeçalho\Model</Filter>
     </ClInclude>
-    <ClInclude Include="StringUtils.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
+    <ClInclude Include="DateUtils.h">
+      <Filter>Arquivos de Cabeçalho\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Docente.h">
+      <Filter>Arquivos de Cabeçalho\Model</Filter>
     </ClInclude>
     <ClInclude Include="Tokenizer.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
-    </ClInclude>
-    <ClInclude Include="Veiculo.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
+      <Filter>Arquivos de Cabeçalho\Util</Filter>
     </ClInclude>
     <ClInclude Include="strptime.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
+      <Filter>Arquivos de Cabeçalho\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="StringUtils.h">
+      <Filter>Arquivos de Cabeçalho\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="NumberUtils.h">
+      <Filter>Arquivos de Cabeçalho\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="NumPunctPTBR.h">
+      <Filter>Arquivos de Cabeçalho\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Veiculo.h">
+      <Filter>Arquivos de Cabeçalho\Model</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Prog3CPlusPlus.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="Conferencia.cpp">
-      <Filter>Arquivos de Origem</Filter>
-    </ClCompile>
     <ClCompile Include="Controller.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="DateUtils.cpp">
+    <ClCompile Include="CustomException.cpp">
       <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="Conferencia.cpp">
+      <Filter>Arquivos de Origem\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="DateUtils.cpp">
+      <Filter>Arquivos de Origem\Util</Filter>
     </ClCompile>
     <ClCompile Include="Docente.cpp">
-      <Filter>Arquivos de Origem</Filter>
+      <Filter>Arquivos de Origem\Model</Filter>
     </ClCompile>
     <ClCompile Include="NumberUtils.cpp">
-      <Filter>Arquivos de Origem</Filter>
+      <Filter>Arquivos de Origem\Util</Filter>
     </ClCompile>
     <ClCompile Include="NumPunctPTBR.cpp">
-      <Filter>Arquivos de Origem</Filter>
+      <Filter>Arquivos de Origem\Util</Filter>
     </ClCompile>
     <ClCompile Include="Periodico.cpp">
-      <Filter>Arquivos de Origem</Filter>
-    </ClCompile>
-    <ClCompile Include="Pontuacao.cpp">
-      <Filter>Arquivos de Origem</Filter>
-    </ClCompile>
-    <ClCompile Include="Publicacao.cpp">
-      <Filter>Arquivos de Origem</Filter>
-    </ClCompile>
-    <ClCompile Include="Qualificacao.cpp">
-      <Filter>Arquivos de Origem</Filter>
-    </ClCompile>
-    <ClCompile Include="Qualis.cpp">
-      <Filter>Arquivos de Origem</Filter>
+      <Filter>Arquivos de Origem\Model</Filter>
     </ClCompile>
     <ClCompile Include="Regras.cpp">
-      <Filter>Arquivos de Origem</Filter>
+      <Filter>Arquivos de Origem\Model</Filter>
     </ClCompile>
-    <ClCompile Include="StringUtils.cpp">
-      <Filter>Arquivos de Origem</Filter>
+    <ClCompile Include="Publicacao.cpp">
+      <Filter>Arquivos de Origem\Model</Filter>
     </ClCompile>
-    <ClCompile Include="Tokenizer.cpp">
-      <Filter>Arquivos de Origem</Filter>
+    <ClCompile Include="Qualificacao.cpp">
+      <Filter>Arquivos de Origem\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Qualis.cpp">
+      <Filter>Arquivos de Origem\Model</Filter>
     </ClCompile>
     <ClCompile Include="Veiculo.cpp">
-      <Filter>Arquivos de Origem</Filter>
+      <Filter>Arquivos de Origem\Model</Filter>
     </ClCompile>
-    <ClCompile Include="strptime.c">
-      <Filter>Arquivos de Origem</Filter>
+    <ClCompile Include="Tokenizer.cpp">
+      <Filter>Arquivos de Origem\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="StringUtils.cpp">
+      <Filter>Arquivos de Origem\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="Pontuacao.cpp">
+      <Filter>Arquivos de Origem\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="strptime.cpp">
+      <Filter>Arquivos de Origem\Util</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

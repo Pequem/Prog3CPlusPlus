@@ -15,7 +15,13 @@
 #define CONTROLLER_H
 #include <string>
 #include <vector>
+#include <map>
 #include "Docente.h"
+#include "Veiculo.h"
+#include "CustomException.h"
+#include "Tokenizer.h"
+#include "DateUtils.h"
+#include "NumberUtils.h"
 using namespace std;
 using namespace model;
 class Controller {
@@ -24,8 +30,10 @@ public:
     virtual ~Controller();
 private:
     const char tokenDelimit = ';';
-    vector<Docente> docentes;
+    map<long,Docente> docentes;
+	map<string, Veiculo> veiculos;
     void readDocentes(string d);
+	void readVeiculos(string v);
 };
 
 #endif /* CONTROLLER_H */

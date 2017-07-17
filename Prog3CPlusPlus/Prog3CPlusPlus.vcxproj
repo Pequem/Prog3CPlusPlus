@@ -144,6 +144,7 @@
   <ItemGroup>
     <ClInclude Include="Conferencia.h" />
     <ClInclude Include="Controller.h" />
+    <ClInclude Include="CustomException.h" />
     <ClInclude Include="DateUtils.h" />
     <ClInclude Include="Docente.h" />
     <ClInclude Include="NumberUtils.h" />
@@ -162,6 +163,7 @@
   <ItemGroup>
     <ClCompile Include="Conferencia.cpp" />
     <ClCompile Include="Controller.cpp" />
+    <ClCompile Include="CustomException.cpp" />
     <ClCompile Include="DateUtils.cpp" />
     <ClCompile Include="Docente.cpp" />
     <ClCompile Include="NumberUtils.cpp" />
@@ -174,7 +176,7 @@
     <ClCompile Include="Qualis.cpp" />
     <ClCompile Include="Regras.cpp" />
     <ClCompile Include="StringUtils.cpp" />
-    <ClCompile Include="strptime.c" />
+    <ClCompile Include="strptime.cpp" />
     <ClCompile Include="Tokenizer.cpp" />
     <ClCompile Include="Veiculo.cpp" />
   </ItemGroup>

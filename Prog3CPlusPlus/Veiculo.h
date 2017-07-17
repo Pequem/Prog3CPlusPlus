@@ -19,11 +19,12 @@ namespace model {
     class Veiculo {
     public:
         Veiculo();
-        Veiculo(string sigla, string nome, double fatorDeImpacto, string issn);
+        Veiculo(string sigla, string nome, string tipo, double fatorDeImpacto, string issn);
         virtual ~Veiculo();
     private:
         string sigla;
         string nome;
+		string tipo;
         double fatorDeImpactor;
         string issn;
     };

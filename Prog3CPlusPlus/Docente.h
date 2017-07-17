@@ -21,10 +21,10 @@ namespace model {
 	
     class Docente {
     public:
-		Docente(int cod, string nome, time_t nascimento, time_t dataIngresso, bool coordenador);
+		Docente(long cod, string nome, time_t nascimento, time_t dataIngresso, bool coordenador);
         virtual ~Docente();
     private:
-		int cod;
+		long cod;
         string nome;
         std::time_t nascimento;
         std::time_t dataIngresso;

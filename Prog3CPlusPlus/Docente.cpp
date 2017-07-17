@@ -14,7 +14,7 @@
 #include "Docente.h"
 namespace model {
 
-	Docente::Docente(int cod,  string nome, time_t nascimento, time_t dataIngresso, bool coordenador) {
+	Docente::Docente(long cod,  string nome, time_t nascimento, time_t dataIngresso, bool coordenador) {
 		this->cod = cod;
 		this->nome = nome;
         this->nascimento = nascimento;

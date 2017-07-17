@@ -5,6 +5,7 @@
 #include <string>
 #include <cstring>
 #include "Controller.h"
+#include "CustomException.h"
 int main(int argc, char **argv)
 {
 	using namespace std;
@@ -39,10 +40,9 @@ int main(int argc, char **argv)
 	try {
 		Controller(d, v, p, q, r, a);
 	}
-	catch (exception e) {
+	catch (CustomException e) {
 		cout << e.what() << endl;
 	}
-	return 0;
-    return 0;
+	system("Pause");
 }
 
