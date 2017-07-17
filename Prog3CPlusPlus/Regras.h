@@ -13,7 +13,7 @@
 
 #ifndef REGRAS_H
 #define REGRAS_H
-#include "Date.h"
+#include <ctime>
 namespace model {
 
     class Regras {
@@ -22,8 +22,8 @@ namespace model {
         virtual ~Regras();
     private:
         double fatorMult;
-        Date dataInicio;
-        Date dataFim;
+        time_t dataInicio;
+        time_t dataFim;
         int qtdAnos;
         int pontMin;
     };

@@ -144,7 +144,6 @@
   <ItemGroup>
     <ClInclude Include="Conferencia.h" />
     <ClInclude Include="Controller.h" />
-    <ClInclude Include="Date.h" />
     <ClInclude Include="DateUtils.h" />
     <ClInclude Include="Docente.h" />
     <ClInclude Include="NumberUtils.h" />
@@ -155,16 +154,14 @@
     <ClInclude Include="Qualificacao.h" />
     <ClInclude Include="Qualis.h" />
     <ClInclude Include="Regras.h" />
-    <ClInclude Include="stdafx.h" />
     <ClInclude Include="StringUtils.h" />
-    <ClInclude Include="targetver.h" />
+    <ClInclude Include="strptime.h" />
     <ClInclude Include="Tokenizer.h" />
     <ClInclude Include="Veiculo.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Conferencia.cpp" />
     <ClCompile Include="Controller.cpp" />
-    <ClCompile Include="Date.cpp" />
     <ClCompile Include="DateUtils.cpp" />
     <ClCompile Include="Docente.cpp" />
     <ClCompile Include="NumberUtils.cpp" />
@@ -176,8 +173,8 @@
     <ClCompile Include="Qualificacao.cpp" />
     <ClCompile Include="Qualis.cpp" />
     <ClCompile Include="Regras.cpp" />
-    <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="StringUtils.cpp" />
+    <ClCompile Include="strptime.c" />
     <ClCompile Include="Tokenizer.cpp" />
     <ClCompile Include="Veiculo.cpp" />
   </ItemGroup>

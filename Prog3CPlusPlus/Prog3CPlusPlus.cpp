@@ -1,9 +1,9 @@
 // Prog3CPlusPlus.cpp : Define o ponto de entrada para a aplicação de console.
 //
 
-#include "stdafx.h"
 #include <iostream>
 #include <string>
+#include <cstring>
 #include "Controller.h"
 int main(int argc, char **argv)
 {
@@ -33,7 +33,7 @@ int main(int argc, char **argv)
 			a = argv[++i];
 		}
 		else {
-			cout << "Comando " << argv[i] << " invalido." << endl;
+			//cout << "Comando " << argv[i] << " invalido." << endl;
 		}
 	}
 	try {

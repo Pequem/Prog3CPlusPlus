@@ -9,6 +9,7 @@
 
 #include <iostream>
 #include "DateUtils.h"
+#include "strptime.h"
 
 using namespace std;
 

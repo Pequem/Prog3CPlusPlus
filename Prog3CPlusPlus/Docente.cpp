@@ -14,12 +14,12 @@
 #include "Docente.h"
 namespace model {
 
-    Docente::Docente(string nome, Date nascimento, Date dataIngresso, bool coordenador, list<Publicacao> publicacoes) {
-        this->nome = nome;
+	Docente::Docente(int cod,  string nome, time_t nascimento, time_t dataIngresso, bool coordenador) {
+		this->cod = cod;
+		this->nome = nome;
         this->nascimento = nascimento;
         this->dataIngresso = dataIngresso;
         this->coordenador = coordenador;
-        this->publicacoes = publicacoes;
     }
 
     Docente::~Docente() {

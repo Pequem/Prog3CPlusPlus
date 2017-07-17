@@ -13,21 +13,22 @@
 
 #ifndef DOCENTE_H
 #define DOCENTE_H
-#include "Date.h"
 #include "Publicacao.h"
 #include <list>
+#include <ctime>
+using namespace std;
 namespace model {
-
+	
     class Docente {
     public:
-        Docente(string nome, Date nascimento, Date dataIngresso, bool coordenador, list<Publicacao> publicacoes);
+		Docente(int cod, string nome, time_t nascimento, time_t dataIngresso, bool coordenador);
         virtual ~Docente();
     private:
+		int cod;
         string nome;
-        Date nascimento;
-        Date dataIngresso;
+        std::time_t nascimento;
+        std::time_t dataIngresso;
         bool coordenador;
-        list<Publicacao> publicacoes;
     };
 }
 #endif /* DOCENTE_H */
