@@ -15,13 +15,14 @@
 
 namespace model {
 
-    Publicacao::Publicacao(int ano, string titulo, int pagInicial, int pagFinal, int numero, Veiculo veiculo) {
+    Publicacao::Publicacao(int ano, string titulo, int pagInicial, int pagFinal, int numero, Veiculo veiculo, vector<Docente> autores) {
         this->ano = ano;
         this->titulo = titulo;
         this->pagInicial = pagInicial;
         this->pagFinal = pagFinal;
         this->numero = numero;
         this->veiculo = veiculo;
+		//this->autores = autores;
     }
 
     Publicacao::~Publicacao() {

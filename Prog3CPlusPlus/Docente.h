@@ -13,9 +13,9 @@
 
 #ifndef DOCENTE_H
 #define DOCENTE_H
-#include "Publicacao.h"
 #include <list>
 #include <ctime>
+#include <string>
 using namespace std;
 namespace model {
 	

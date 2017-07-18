@@ -20,6 +20,7 @@ namespace model {
     public:
         Veiculo();
         Veiculo(string sigla, string nome, string tipo, double fatorDeImpacto, string issn);
+		string getTipo();
         virtual ~Veiculo();
     private:
         string sigla;

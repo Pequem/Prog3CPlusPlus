@@ -14,12 +14,14 @@
 #ifndef CONFERENCIA_H
 #define CONFERENCIA_H
 #include <string>
+#include <vector>
+#include "Docente.h"
 #include "Publicacao.h"
 namespace model {
 
     class Conferencia:Publicacao {
     public:
-        Conferencia(int ano, string titulo, int pagInicial, int pagFinal, int numero, Veiculo veiculo, string local);
+        Conferencia(int ano, string titulo, int pagInicial, int pagFinal, int numero, Veiculo veiculo, string local, vector<Docente> autores);
         virtual ~Conferencia();
     private:
         string local;

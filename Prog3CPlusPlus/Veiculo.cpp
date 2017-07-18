@@ -24,6 +24,10 @@ namespace model {
         this->issn = issn;
     }
 
+	string Veiculo::getTipo() {
+		return this->tipo;
+	}
+
     Veiculo::~Veiculo() {
     }
 

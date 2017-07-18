@@ -14,13 +14,15 @@
 #ifndef PUBLICACAO_H
 #define PUBLICACAO_H
 #include <string>
+#include <vector>
 #include "Veiculo.h"
+#include "Docente.h"
 namespace model {
     using namespace std;
 
     class Publicacao {
     public:
-        Publicacao(int ano, string titulo, int pagInicial, int pagFinal, int numero, Veiculo veiculo);
+        Publicacao(int ano, string titulo, int pagInicial, int pagFinal, int numero, Veiculo veiculo, vector<Docente> autores);
         virtual ~Publicacao();
     private:
         int ano;
@@ -29,6 +31,7 @@ namespace model {
         int pagFinal;
         int numero;
         Veiculo veiculo;
+		vector<Docente> autores;
     };
 }
 #endif /* PUBLICACAO_H */

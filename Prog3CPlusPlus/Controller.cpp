@@ -28,15 +28,15 @@ Controller::~Controller() {
 void Controller::readDocentes(string d){
     using namespace cpp_util;
 	using namespace std;
-    ifstream dIn(d);
+    ifstream in(d);
     string linha;
     Tokenizer *t;
     vector<string> token;
     
-    if(!dIn.good()) throw CustomException("Erro de I/O");
-    getline(dIn, linha);
+    if(!in.good()) throw CustomException("Erro de I/O");
+    getline(in, linha);
     
-    while(getline(dIn, linha)){
+    while(getline(in, linha)){
         t = new Tokenizer(linha, tokenDelimit);
         token = t->remaining();
 		if (docentes.count(atol(token.at(0).data()) > 0)) throw CustomException("Código repetido para docente: " + atol(token.at(4).data()));
@@ -49,15 +49,15 @@ void Controller::readDocentes(string d){
 void Controller::readVeiculos(string v) {
 	using namespace cpp_util;
 	using namespace std;
-	ifstream dIn(v);
+	ifstream in(v);
 	string linha;
 	Tokenizer *t;
 	vector<string> token;
 
-	if (!dIn.good()) throw CustomException("Erro de I/O");
-	getline(dIn, linha);
+	if (!in.good()) throw CustomException("Erro de I/O");
+	getline(in, linha);
 
-	while (getline(dIn, linha)) {
+	while (getline(in, linha)) {
 		t = new Tokenizer(linha, tokenDelimit);
 		token = t->remaining();
 		if (veiculos.count(token.at(0)) > 0) throw CustomException("Código repetido para veículo: " + token.at(0));
@@ -69,5 +69,37 @@ void Controller::readVeiculos(string v) {
 		delete(t);
 	}
 	return;
+}
+
+void Controller::readPublicacaoes(string p) {
+	using namespace std;
+	using namespace cpp_util;
+	string linha;
+	ifstream in(p);
+	Tokenizer *t;
+	vector<string> token, tokenAutores;
+
+	if (!in.good()) throw CustomException("Erro de I/O");
+	getline(in, linha);
+
+	while (getline(in, linha)) {
+		t = new Tokenizer(linha, tokenDelimit);
+		token = t->remaining();
+		delete(t);
+		t = new Tokenizer(token.at(3), ',');
+		tokenAutores = t->remaining();
+		vector<Docente> autores;
+		Veiculo v = veiculos.at(token.at(1));
+		throw CustomException("Implementar lista de autores em publicacao");
+		throw CustomException("implementar polimorfismo");
+
+		if (v.getTipo().compare(string("C"))) {
+			publicacoes.insert(publicacoes.end, new Conferencia(atoi(token.at(0).data()),token.at(2),atoi(token.at(7).data()),atoi(token.at(8).data()), atoi(token.at(4).data()), v, token.at(6), autores));
+		}
+		else {
+			publicacoes.insert(publicacoes.end, new Periodico(atoi(token.at(0).data()), token.at(2), atoi(token.at(7).data()), atoi(token.at(8).data()), atoi(token.at(4).data()), v, atoi(token.at(5).data()), autores));
+		}
+
+	}
 }
 

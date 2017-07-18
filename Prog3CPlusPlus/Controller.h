@@ -18,6 +18,9 @@
 #include <map>
 #include "Docente.h"
 #include "Veiculo.h"
+#include "Publicacao.h"
+#include "Conferencia.h"
+#include "Periodico.h"
 #include "CustomException.h"
 #include "Tokenizer.h"
 #include "DateUtils.h"
@@ -32,8 +35,10 @@ private:
     const char tokenDelimit = ';';
     map<long,Docente> docentes;
 	map<string, Veiculo> veiculos;
+	vector<Publicacao*> publicacoes;
     void readDocentes(string d);
 	void readVeiculos(string v);
+	void readPublicacaoes(string p);
 };
 
 #endif /* CONTROLLER_H */

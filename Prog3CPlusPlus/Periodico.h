@@ -14,13 +14,16 @@
 #ifndef PERIODICO_H
 #define PERIODICO_H
 
+
+#include <vector>
+#include "Docente.h"
 #include "Publicacao.h"
 
 namespace model {
 
     class Periodico:Publicacao {
     public:
-        Periodico(int ano, string titulo, int pagInicial, int pagFinal, int numero, Veiculo veiculo, int volume);
+        Periodico(int ano, string titulo, int pagInicial, int pagFinal, int numero, Veiculo veiculo, int volume, vector<Docente> autores);
         virtual ~Periodico();
     private:
         int volume;
