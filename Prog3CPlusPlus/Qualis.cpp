@@ -14,9 +14,13 @@
 #include "Qualis.h"
 
 namespace model {
+	Qualis::Qualis() {
 
-    Qualis::Qualis() {
-    }
+	}
+
+    Qualis::Qualis(string nome) {
+		this->nome = nome;
+	}
 
     Qualis::~Qualis() {
     }

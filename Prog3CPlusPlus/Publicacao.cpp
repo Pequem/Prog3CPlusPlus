@@ -22,7 +22,9 @@ namespace model {
         this->pagFinal = pagFinal;
         this->numero = numero;
         this->veiculo = veiculo;
-		//this->autores = autores;
+		for (Docente d : autores) {
+			this->autores.insert(this->autores.end(), d);
+		}
     }
 
     Publicacao::~Publicacao() {

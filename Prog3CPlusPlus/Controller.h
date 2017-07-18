@@ -21,6 +21,7 @@
 #include "Publicacao.h"
 #include "Conferencia.h"
 #include "Periodico.h"
+#include "Qualis.h"
 #include "CustomException.h"
 #include "Tokenizer.h"
 #include "DateUtils.h"
@@ -33,12 +34,14 @@ public:
     virtual ~Controller();
 private:
     const char tokenDelimit = ';';
-    map<long,Docente> docentes;
+    map<long long,Docente> docentes;
 	map<string, Veiculo> veiculos;
 	vector<Publicacao*> publicacoes;
+	map<string,Qualis> qualis;
     void readDocentes(string d);
 	void readVeiculos(string v);
-	void readPublicacaoes(string p);
+	void readPublicacoes(string p);
+	void readQualis(string q);
 };
 
 #endif /* CONTROLLER_H */

@@ -1,3 +1,5 @@
+#ifndef _STRPTIME_H_
+#define _STRPTIME_H_
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -255,3 +257,4 @@ char * strptime(const char *s, const char *format, struct tm *tm)
 	return (working ? (char *)s : 0);
 }
 #endif // _MSC_VER
+#endif

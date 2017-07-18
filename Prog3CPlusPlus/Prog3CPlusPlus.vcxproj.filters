@@ -134,8 +134,5 @@
     <ClCompile Include="Pontuacao.cpp">
       <Filter>Arquivos de Origem\Model</Filter>
     </ClCompile>
-    <ClCompile Include="strptime.cpp">
-      <Filter>Arquivos de Origem\Util</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>

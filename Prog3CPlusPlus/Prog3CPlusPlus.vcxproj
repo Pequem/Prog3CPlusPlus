@@ -176,7 +176,6 @@
     <ClCompile Include="Qualis.cpp" />
     <ClCompile Include="Regras.cpp" />
     <ClCompile Include="StringUtils.cpp" />
-    <ClCompile Include="strptime.cpp" />
     <ClCompile Include="Tokenizer.cpp" />
     <ClCompile Include="Veiculo.cpp" />
   </ItemGroup>

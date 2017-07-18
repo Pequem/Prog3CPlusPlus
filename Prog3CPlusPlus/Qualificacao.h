@@ -14,15 +14,17 @@
 #ifndef QUALIFICACAO_H
 #define QUALIFICACAO_H
 #include "Veiculo.h"
+#include "Qualis.h"
 namespace model {
 
     class Qualificacao {
     public:
-        Qualificacao(int ano, Veiculo veiculo);
+        Qualificacao(int ano, Veiculo veiculo, Qualis quali);
         virtual ~Qualificacao();
     private:
         int ano;
         Veiculo veiculo;
+		Qualis quali;
     };
 }
 #endif /* QUALIFICACAO_H */

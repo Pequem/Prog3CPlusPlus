@@ -18,7 +18,8 @@ namespace model {
     using namespace std;
     class Qualis {
     public:
-        Qualis();
+		Qualis();
+        Qualis(string nome);
         virtual ~Qualis();
     private:
         string nome;
