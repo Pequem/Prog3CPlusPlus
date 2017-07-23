@@ -25,7 +25,10 @@ Controller::Controller(string d, string v, string p, string q, string r, string 
 	readDocentes(d);
 	readVeiculos(v);
 	readPublicacoes(p);
-	readQualis(q);
+	readQualificacoes(q);
+	readRegras(r);
+	anoRecredenciamento = atoi(a.data());
+	cout << "Leitura Comcluida" << endl;
 }
 
 Controller::~Controller() {
@@ -115,7 +118,7 @@ void Controller::readPublicacoes(string p) {
 		}
 	}
 }
-void Controller::readQualis(string q) {
+void Controller::readQualificacoes(string q) {
 	using namespace std;
 	using namespace cpp_util;
 	string linha;
@@ -130,6 +133,28 @@ void Controller::readQualis(string q) {
 		t = new Tokenizer(linha, tokenDelimit);
 		token = t->remaining();
 		delete(t);
+		if (qualis.count(token.at(2)) == 0) throw CustomException("Qualis desconhecido para qualificação do veículo " + token.at(1) + " no ano " + token.at(0) + ": " + token.at(2));
+		if (veiculos.count(token.at(1)) == 0) throw CustomException("Sigla de veículo não definida usada na qualificação do ano \"" + token.at(0) + "\": " + token.at(1));
+		qualificacoes.insert(qualificacoes.end(), Qualificacao(atoi(token.at(0).data()), veiculos.find(token.at(1))->second , qualis.find(token.at(2))->second));
+	}
+}
+
+void Controller::readRegras(string r) {
+	using namespace std;
+	using namespace cpp_util;
+	string linha;
+	ifstream in(r);
+	Tokenizer *t;
+	vector<string> token;
+
+	if (!in.good()) throw CustomException("Erro de I/O");
+	getline(in, linha);
+
+	while (getline(in, linha)) {
+		t = new Tokenizer(linha, tokenDelimit);
+		token = t->remaining();
+		delete(t);
+		if (!(validDate(token.at(0), DATE_FORMAT_PT_BR_SHORT) && validDate(token.at(1), DATE_FORMAT_PT_BR_SHORT))) throw CustomException("Erro de formatação");
 	}
 }
 
