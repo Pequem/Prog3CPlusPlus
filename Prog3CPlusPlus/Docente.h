@@ -16,6 +16,8 @@
 #include <list>
 #include <ctime>
 #include <string>
+#include <vector>
+#include "Regras.h"
 using namespace std;
 namespace model {
 	
@@ -23,6 +25,7 @@ namespace model {
     public:
 		Docente(long cod, string nome, time_t nascimento, time_t dataIngresso, bool coordenador);
         virtual ~Docente();
+		double getPontuacao(int ano, vector<Regras> Regras);
     private:
 		long long cod;
         string nome;

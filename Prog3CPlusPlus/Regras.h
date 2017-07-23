@@ -18,7 +18,7 @@ namespace model {
 
     class Regras {
     public:
-        Regras();
+        Regras(double fatorMult, time_t dataInicio, time_t dataFim, int qtAno, int pontMin, map<string, int> pontuacoesRegras);
         virtual ~Regras();
     private:
         double fatorMult;

@@ -23,6 +23,7 @@
 #include "Periodico.h"
 #include "Qualis.h"
 #include "Qualificacao.h"
+#include "Regras.h"
 #include "CustomException.h"
 #include "Tokenizer.h"
 #include "DateUtils.h"
@@ -41,12 +42,14 @@ private:
 	vector<Publicacao*> publicacoes;
 	map<string,Qualis> qualis;
 	vector<Qualificacao> qualificacoes;
+	vector<Regras> regras;
 	int anoRecredenciamento;
     void readDocentes(string d);
 	void readVeiculos(string v);
 	void readPublicacoes(string p);
 	void readQualificacoes(string q);
 	void readRegras(string r);
+	void WriteRecredenciamento();
 };
 
 #endif /* CONTROLLER_H */
