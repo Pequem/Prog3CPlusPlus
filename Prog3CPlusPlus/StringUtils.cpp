@@ -15,6 +15,7 @@ using namespace std;
 
 namespace cpp_util {
 
+	/*
 string& ltrim(string &s) {
 	s.erase(s.begin(), find_if(s.begin(), s.end(), not1(ptr_fun<int, int>(isspace))));
 	return s;
@@ -23,6 +24,20 @@ string& ltrim(string &s) {
 string& rtrim(string &s) {
 	s.erase(find_if(s.rbegin(), s.rend(), not1(ptr_fun<int, int>(isspace))).base(), s.end());
 	return s;
+}
+*/
+std::string & ltrim(std::string & str)
+{
+	auto it2 = std::find_if(str.begin(), str.end(), [](char ch) { return !std::isspace<char>(ch, std::locale::classic()); });
+	str.erase(str.begin(), it2);
+	return str;
+}
+
+std::string & rtrim(std::string & str)
+{
+	auto it1 = std::find_if(str.rbegin(), str.rend(), [](char ch) { return !std::isspace<char>(ch, std::locale::classic()); });
+	str.erase(it1.base(), str.end());
+	return str;
 }
 
 string& trim(string& s) {

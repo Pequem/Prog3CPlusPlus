@@ -27,6 +27,7 @@
 #include "Tokenizer.h"
 #include "DateUtils.h"
 #include "NumberUtils.h"
+#include "StringUtils.h"
 using namespace std;
 using namespace model;
 class Controller {

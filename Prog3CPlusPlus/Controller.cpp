@@ -52,6 +52,9 @@ void Controller::readDocentes(string d){
         t = new Tokenizer(linha, tokenDelimit);
         token = t->remaining();
 		delete(t);
+		for (string &t1: token) {
+			trim(t1);
+		}
 		if (docentes.count(atoll(token.at(0).data()) > 0)) throw CustomException("Código repetido para docente: " + atoll(token.at(4).data()));
 		if (!(validDate(token.at(2), DATE_FORMAT_PT_BR_SHORT) && validDate(token.at(3), DATE_FORMAT_PT_BR_SHORT))) throw CustomException("Erro de formatação");
 		docentes.insert(pair<long long, Docente>(atoll(token.at(0).data()), Docente(atoll(token.at(0).data()), token.at(1), parseDate(token.at(2), DATE_FORMAT_PT_BR_SHORT), parseDate(token.at(3), DATE_FORMAT_PT_BR_SHORT), token.at(4).compare("X") == 0 )));
@@ -73,6 +76,9 @@ void Controller::readVeiculos(string v) {
 		t = new Tokenizer(linha, tokenDelimit);
 		token = t->remaining();
 		delete(t);
+		for (string &t1 : token) {
+			trim(t1);
+		}
 		if (veiculos.count(token.at(0)) > 0) throw CustomException("Código repetido para veículo: " + token.at(0));
 		if ((token.at(2).compare("C") == 0) || (token.at(2).compare("P") == 0)) {
 			veiculos.insert(pair<string, Veiculo>(token.at(0), Veiculo(token.at(0), token.at(1), token.at(2) , parseDouble(token.at(3), LOCALE_PT_BR), token.at(4))));
@@ -98,9 +104,15 @@ void Controller::readPublicacoes(string p) {
 		t = new Tokenizer(linha, tokenDelimit);
 		token = t->remaining();
 		delete(t);
+		for (string &t1 : token) {
+			trim(t1);
+		}
 		t = new Tokenizer(token.at(3), ',');
 		tokenAutores = t->remaining();
 		delete(t);
+		for (string &t1 : tokenAutores) {
+			trim(t1);
+		}
 		vector<Docente> autores;
 		for (string autor : tokenAutores) {
 			if (docentes.count(atoll(autor.data())) == 0) throw CustomException("Código de docente não definido usado na publicação \"" + token.at(2) + "\": " + autor);
@@ -133,6 +145,9 @@ void Controller::readQualificacoes(string q) {
 		t = new Tokenizer(linha, tokenDelimit);
 		token = t->remaining();
 		delete(t);
+		for (string &t1 : token) {
+			trim(t1);
+		}
 		if (qualis.count(token.at(2)) == 0) throw CustomException("Qualis desconhecido para qualificação do veículo " + token.at(1) + " no ano " + token.at(0) + ": " + token.at(2));
 		if (veiculos.count(token.at(1)) == 0) throw CustomException("Sigla de veículo não definida usada na qualificação do ano \"" + token.at(0) + "\": " + token.at(1));
 		qualificacoes.insert(qualificacoes.end(), Qualificacao(atoi(token.at(0).data()), veiculos.find(token.at(1))->second , qualis.find(token.at(2))->second));
@@ -154,6 +169,9 @@ void Controller::readRegras(string r) {
 		t = new Tokenizer(linha, tokenDelimit);
 		token = t->remaining();
 		delete(t);
+		for (string &t1 : token) {
+			trim(t1);
+		}
 		if (!(validDate(token.at(0), DATE_FORMAT_PT_BR_SHORT) && validDate(token.at(1), DATE_FORMAT_PT_BR_SHORT))) throw CustomException("Erro de formatação");
 	}
 }
