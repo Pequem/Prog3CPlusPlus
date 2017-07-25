@@ -142,6 +142,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="classMap.h" />
     <ClInclude Include="Conferencia.h" />
     <ClInclude Include="Controller.h" />
     <ClInclude Include="CustomException.h" />

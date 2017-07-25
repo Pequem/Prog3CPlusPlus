@@ -28,6 +28,34 @@ namespace model {
 		return this->tipo;
 	}
 
+	void Veiculo::setQualificacao(Qualificacao *q) {
+		this->qualificacoes.insert(this->qualificacoes.end(), q);
+	}
+
+	void Veiculo::setPublicacao(Publicacao* p) {
+		this->publicacoes.insert(this->publicacoes.end(), p);
+	}
+
+	vector<Qualificacao*> Veiculo::getQualificacoes() {
+		return this->qualificacoes;
+	}
+
+	string Veiculo::getSigla() {
+		return this->sigla;
+	}
+
+	string Veiculo::getNome() {
+		return this->nome;
+	}
+
+	double Veiculo::getFatorDeImpacto() {
+		return this->fatorDeImpactor;
+	}
+
+	vector<Publicacao*> Veiculo::getPublicacoes() {
+		return this->publicacoes;
+	}
+
     Veiculo::~Veiculo() {
     }
 

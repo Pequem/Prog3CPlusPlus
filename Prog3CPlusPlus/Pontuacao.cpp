@@ -15,12 +15,23 @@
 
 namespace model {
 
-    Pontuacao::Pontuacao(int valor, Qualis quali, Regras regra) {
+    Pontuacao::Pontuacao(int valor, Qualis* quali) {
         this->valor = valor;
-        this->quali.insert(this->quali.end(), quali);
-        this->regras = regras;
+        this->quali= quali;
     }
 
     Pontuacao::~Pontuacao() {
     }
+
+	Qualis* Pontuacao::getQuali() {
+		return this->quali;
+	}
+
+	int Pontuacao::getValor() {
+		return this->valor;
+	}
+
+	void Pontuacao::setValor(int value) {
+		this->valor = value;
+	}
 }

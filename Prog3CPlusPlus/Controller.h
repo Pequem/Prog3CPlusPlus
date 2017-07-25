@@ -16,9 +16,9 @@
 #include <string>
 #include <vector>
 #include <map>
+#include "Publicacao.h"
 #include "Docente.h"
 #include "Veiculo.h"
-#include "Publicacao.h"
 #include "Conferencia.h"
 #include "Periodico.h"
 #include "Qualis.h"
@@ -37,12 +37,12 @@ public:
     virtual ~Controller();
 private:
     const char tokenDelimit = ';';
-    map<long long,Docente> docentes;
-	map<string, Veiculo> veiculos;
+    map<long long,Docente*> docentes;
+	map<string, Veiculo*> veiculos;
 	vector<Publicacao*> publicacoes;
-	map<string,Qualis> qualis;
-	vector<Qualificacao> qualificacoes;
-	vector<Regras> regras;
+	map<string,Qualis*> qualis;
+	vector<Qualificacao*> qualificacoes;
+	Regras* regras;
 	int anoRecredenciamento;
     void readDocentes(string d);
 	void readVeiculos(string v);
@@ -50,6 +50,8 @@ private:
 	void readQualificacoes(string q);
 	void readRegras(string r);
 	void WriteRecredenciamento();
+	void WriteListaPublicacoes();
+	void WriteStatistics();
 };
 
 #endif /* CONTROLLER_H */

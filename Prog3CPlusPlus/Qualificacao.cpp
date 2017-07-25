@@ -14,11 +14,19 @@
 #include "Qualificacao.h"
 namespace model {
 
-    Qualificacao::Qualificacao(int ano, Veiculo veiculo, Qualis quali) {
+    Qualificacao::Qualificacao(int ano, Veiculo* veiculo, Qualis* quali) {
         this->ano = ano;
         this->veiculo = veiculo;
 		this->quali = quali;
     }
+
+	Qualis* Qualificacao::getQuali() {
+		return this->quali;
+	}
+
+	Veiculo* Qualificacao::getVeiculo() {
+		return this->veiculo;
+	}
 
     Qualificacao::~Qualificacao() {
     }

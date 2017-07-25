@@ -4,6 +4,8 @@
 #include <iostream>
 #include <string>
 #include <cstring>
+#include <exception>
+#include "classMap.h"
 #include "Controller.h"
 #include "CustomException.h"
 int main(int argc, char **argv)

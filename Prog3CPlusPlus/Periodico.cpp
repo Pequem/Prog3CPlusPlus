@@ -14,7 +14,7 @@
 #include "Periodico.h"
 namespace model {
 
-    Periodico::Periodico(int ano, string titulo, int pagInicial, int pagFinal, int numero, Veiculo veiculo, int volume, vector<Docente> autores):
+    Periodico::Periodico(int ano, string titulo, int pagInicial, int pagFinal, int numero, Veiculo* veiculo, int volume, vector<Docente*> autores):
     Publicacao(ano, titulo, pagInicial, pagFinal, numero, veiculo, autores){
         this->volume = volume;
     }

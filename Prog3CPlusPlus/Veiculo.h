@@ -14,6 +14,9 @@
 #ifndef VEICULO_H
 #define VEICULO_H
 #include <string>
+#include "classMap.h"
+#include "Publicacao.h"
+#include "Qualificacao.h"
 namespace model {
     using namespace std;
     class Veiculo {
@@ -21,6 +24,13 @@ namespace model {
         Veiculo();
         Veiculo(string sigla, string nome, string tipo, double fatorDeImpacto, string issn);
 		string getTipo();
+		void setQualificacao(Qualificacao *q);
+		void setPublicacao(Publicacao *p);
+		vector<Qualificacao*> getQualificacoes();
+		string getSigla();
+		string getNome();
+		double getFatorDeImpacto();
+		vector<Publicacao*> getPublicacoes();
         virtual ~Veiculo();
     private:
         string sigla;
@@ -28,6 +38,8 @@ namespace model {
 		string tipo;
         double fatorDeImpactor;
         string issn;
+		vector<Publicacao*> publicacoes;
+		vector<Qualificacao*> qualificacoes;
     };
 }
 #endif /* VEICULO_H */

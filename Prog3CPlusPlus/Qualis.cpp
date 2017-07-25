@@ -22,6 +22,33 @@ namespace model {
 		this->nome = nome;
 	}
 
+	string Qualis::getNome() {
+		return this->nome;
+	}
+
+	void Qualis::setQualificacao(Qualificacao *q) {
+		this->qualificacoes.insert(this->qualificacoes.end(), q);
+	}
+
+	vector<Publicacao*> Qualis::getPublicacoes() {
+		vector<Publicacao*> publicacoes;
+		
+		for (Qualificacao *q: qualificacoes) {
+			for (Publicacao *p: q->getVeiculo()->getPublicacoes()) {
+				publicacoes.insert(publicacoes.end(), p);
+			}
+		}
+		return publicacoes;
+	}
+
+	double Qualis::getRatio() {
+		double soma = 0;
+		for (Publicacao *p : getPublicacoes()) {
+			soma += 1.0 / p->getAutores().size();
+		}
+		return soma;
+	}
+
     Qualis::~Qualis() {
     }
 }

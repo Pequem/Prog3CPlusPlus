@@ -81,6 +81,9 @@
     <ClInclude Include="Veiculo.h">
       <Filter>Arquivos de Cabeçalho\Model</Filter>
     </ClInclude>
+    <ClInclude Include="classMap.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Prog3CPlusPlus.cpp">

@@ -17,21 +17,28 @@
 #include <vector>
 #include "Veiculo.h"
 #include "Docente.h"
+#include "Regras.h"
+#include "Qualificacao.h"
 namespace model {
     using namespace std;
 
     class Publicacao {
     public:
-        Publicacao(int ano, string titulo, int pagInicial, int pagFinal, int numero, Veiculo veiculo, vector<Docente> autores);
+        Publicacao(int ano, string titulo, int pagInicial, int pagFinal, int numero, Veiculo* veiculo, vector<Docente*> autores);
         virtual ~Publicacao();
+		int getAno();
+		string getTitulo();
+		Veiculo* getVeiculo();
+		vector<Docente*> getAutores();
+		double calcularPontos(int ano, Regras* regras);
     private:
         int ano;
         string titulo;
         int pagInicial;
         int pagFinal;
         int numero;
-        Veiculo veiculo;
-		vector<Docente> autores;
+        Veiculo* veiculo;
+		vector<Docente*> autores;
     };
 }
 #endif /* PUBLICACAO_H */

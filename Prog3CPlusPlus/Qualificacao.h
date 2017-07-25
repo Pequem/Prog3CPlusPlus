@@ -19,12 +19,14 @@ namespace model {
 
     class Qualificacao {
     public:
-        Qualificacao(int ano, Veiculo veiculo, Qualis quali);
+        Qualificacao(int ano, Veiculo* veiculo, Qualis* quali);
+		Qualis* getQuali();
+		Veiculo* getVeiculo();
         virtual ~Qualificacao();
     private:
         int ano;
-        Veiculo veiculo;
-		Qualis quali;
+        Veiculo* veiculo;
+		Qualis* quali;
     };
 }
 #endif /* QUALIFICACAO_H */

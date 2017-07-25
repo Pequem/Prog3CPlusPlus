@@ -21,7 +21,7 @@ namespace model {
 
     class Conferencia:Publicacao {
     public:
-        Conferencia(int ano, string titulo, int pagInicial, int pagFinal, int numero, Veiculo veiculo, string local, vector<Docente> autores);
+        Conferencia(int ano, string titulo, int pagInicial, int pagFinal, int numero, Veiculo* veiculo, string local, vector<Docente*> autores);
         virtual ~Conferencia();
     private:
         string local;

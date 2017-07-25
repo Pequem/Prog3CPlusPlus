@@ -20,12 +20,15 @@ namespace model {
     using namespace std;
     class Pontuacao {
     public:
-        Pontuacao(int valor, Qualis quali, Regras regras);
+        Pontuacao(int valor, Qualis* quali);
         virtual ~Pontuacao();
+		void setValor(int value);
+		int getValor();
+		Qualis* getQuali();
     private:
         int valor;
-        vector<Qualis> quali;
-        Regras regras;
+        Qualis* quali;
+		Regras* regra;
     };
 }
 #endif /* PONTUACAO_H */

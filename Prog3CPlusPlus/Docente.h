@@ -18,20 +18,27 @@
 #include <string>
 #include <vector>
 #include "Regras.h"
+#include "Publicacao.h"
 using namespace std;
 namespace model {
-	
+	class Publicacao;
     class Docente {
     public:
-		Docente(long cod, string nome, time_t nascimento, time_t dataIngresso, bool coordenador);
+		Docente(long long cod, string nome, time_t nascimento, time_t dataIngresso, bool coordenador);
         virtual ~Docente();
-		double getPontuacao(int ano, vector<Regras> Regras);
+		double getPontuacao(int ano, Regras* regras);
+		bool isCoordenador();
+		string getNome();
+		int getAnoIngresso();
+		int getIdade(int anoAtual);
+		void setPublicacoes(Publicacao* p);
     private:
 		long long cod;
         string nome;
         std::time_t nascimento;
         std::time_t dataIngresso;
         bool coordenador;
+		vector<Publicacao*> publicacoes;
     };
 }
 #endif /* DOCENTE_H */

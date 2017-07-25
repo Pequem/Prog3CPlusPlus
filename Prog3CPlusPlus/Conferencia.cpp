@@ -14,7 +14,7 @@
 #include "Conferencia.h"
 namespace model {
     using namespace std;
-    Conferencia::Conferencia(int ano, string titulo, int pagInicial, int pagFinal, int numero, Veiculo veiculo, string local, vector<Docente> autores):
+    Conferencia::Conferencia(int ano, string titulo, int pagInicial, int pagFinal, int numero, Veiculo* veiculo, string local, vector<Docente*> autores):
     Publicacao::Publicacao(ano, titulo, pagInicial, pagFinal, numero, veiculo, autores)
     {
         this->local = local;
