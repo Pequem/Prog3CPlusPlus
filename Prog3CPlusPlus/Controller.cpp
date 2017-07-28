@@ -15,6 +15,7 @@
 #include <fstream>
 #include <ctime>
 #include <string>
+#include <iomanip>
 #include <cstring>
 #include "Controller.h"
 Controller::Controller(string d, string v, string p, string q, string r, string a) {
@@ -30,8 +31,9 @@ Controller::Controller(string d, string v, string p, string q, string r, string 
 	anoRecredenciamento = atoi(a.data());
 	cout << "Leitura Concluida" << endl;
 	WriteRecredenciamento();
-	WriteListaPublicacoes();
-	WriteStatistics();
+	//WriteListaPublicacoes();
+	//WriteStatistics();
+	//cout << "Escrita Concluida" << endl;
 }
 
 Controller::~Controller() {
@@ -212,12 +214,13 @@ void Controller::readRegras(string r) {
 
 void Controller::WriteRecredenciamento() {
 
-	ofstream out("recredenciamento.csv");
+	ofstream out("1-recredenciamento.csv");
 	if (!out.good()) throw CustomException("Erro de I/O");
 	out << "Docente;Pontuação;Recredenciado?" << endl;
 
 	for (pair<long long, Docente*> d : docentes) {
 		double pontuacao = d.second->getPontuacao(anoRecredenciamento, regras);
+
 		if (d.second->isCoordenador()) {
 			out << d.second->getNome() << tokenDelimit << pontuacao << tokenDelimit << "Coordenador" << endl;
 		}
@@ -239,7 +242,7 @@ void Controller::WriteRecredenciamento() {
 }
 
 void Controller::WriteListaPublicacoes() {
-	ofstream out("recredenciamento.csv");
+	ofstream out("2-publicacoes.csv");
 	if (!out.good()) throw CustomException("Erro de I/O");
 
 	sort(publicacoes.begin(), publicacoes.end(), [](Publicacao *p1, Publicacao *p2) {
@@ -286,7 +289,7 @@ void Controller::WriteStatistics() {
 
 	for (pair<string, Qualis*> pq : qualis) {
 		out << pq.second->getNome() << tokenDelimit << pq.second->getPublicacoes().size() << tokenDelimit <<
-			cpp_util::formatDouble(pq.second->getRatio(), cpp_util::LOCALE_PT_BR)  << endl;
+			std::setprecision(2) << std::fixed << cpp_util::formatDouble(pq.second->getRatio(), cpp_util::LOCALE_PT_BR)  << endl;
 	}
 	out.close();
 }
