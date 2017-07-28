@@ -25,7 +25,7 @@ coordenador*/
         this->dataIngresso = dataIngresso;
         this->coordenador = coordenador;
     }
-/*O metodo getPontuaçao verifica o numeros de publicaçoes do docente para calcular a sua pontuação, se maior que zero, será verificado quais anos devem ser considerados de acordo com as regras e roda uma lista de publicaçoes somando de acordo*/
+/*O método getPontuaçao verifica o numeros de publicaçoes do docente para calcular a sua pontuação, se maior que zero, será verificado quais anos devem ser considerados de acordo com as regras e roda uma lista de publicaçoes somando de acordo*/
 	double Docente::getPontuacao(int anoRecredenciamento, Regras* regras) {
 		double pontuacao = 0;
 		if (publicacoes.size() > 0) {
@@ -38,7 +38,7 @@ coordenador*/
 		}
 		return pontuacao;
 	}
-/*O metodo setPublicacoes coloca uma devida publicaçao ao docente referido*/
+/*O método setPublicacoes coloca uma devida publicaçao ao docente referido*/
 	void Docente::setPublicacoes(Publicacao *p) {
 		this->publicacoes.insert(this->publicacoes.end(), p);
 	}
@@ -46,25 +46,25 @@ coordenador*/
 	bool Docente::isCoordenador() {
 		return this->coordenador;
 	}
-/*Retorna o nome do docente*/
+/*O método getNome retorna o nome do docente*/
 	string Docente::getNome() {
 		return nome;
 	}
-/* Retorna o ano de ingresso do docente */
+/*O método getAnoIngresso retorna o ano de ingresso do docente */
 	int Docente::getAnoIngresso() {
 		struct tm *tempo;
 		tempo = localtime(&this->dataIngresso);
 		
 		return tempo->tm_year + 1900;
 	}
-/*Retorna a idade do docente*/
+/*O método getIdade retorna a idade do docente*/
 	int Docente::getIdade(int anoAtual) {
 		struct tm *tempo;
 		tempo = localtime(&this->nascimento);
 	
 		return (anoAtual - tempo->tm_year + 1900);
 	}
-/*Destroi o Objeto Docente*/
+/*O destrutor de Docente destroi o Objeto Docente*/
     Docente::~Docente() {
     }
 }

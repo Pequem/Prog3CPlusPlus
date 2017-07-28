@@ -14,7 +14,8 @@
 #include "Publicacao.h"
 
 namespace model {
-
+	/*O contrustor de Publicação recebe como parametros, ano, titulo, paginas inicial e final, numero, veiculo em que se encontra e 
+	lista de docentes que são os autores*/
 	Publicacao::Publicacao(int ano, string titulo, int pagInicial, int pagFinal, int numero, Veiculo* veiculo, vector<Docente*> autores) {
 		this->ano = ano;
 		this->titulo = titulo;
@@ -26,14 +27,15 @@ namespace model {
 			this->autores.insert(this->autores.end(), d);
 		}
 	}
-
+	/*O destrutor de Publicação destroi o objeto Publicação*/
 	Publicacao::~Publicacao() {
 	}
-
+	/*O método getAno retorna o valor do ano da publicação*/
 	int Publicacao::getAno() {
 		return this->ano;
 	}
-
+	/*O método calcularPontos calcula os pontos da publicaçao aplicando um fator multiplicador dependendo do seu tipo e seguindo determinadas
+	regras dependendo do ano*/
 	double Publicacao::calcularPontos(int ano, Regras* regras) {
 		double pontuacao = 0;
 
@@ -49,15 +51,15 @@ namespace model {
 
 		return pontuacao;
 	}
-
+	/*O método getTitulo retorna o titulo da publicação */
 	string Publicacao::getTitulo() {
 		return this->titulo;
 	}
-
+	/*O método getAutores retorna a lista de docentes da publicação */
 	vector<Docente*> Publicacao::getAutores() {
 		return this->autores;
 	}
-
+	/*O método getVeiculo retorna o veiculo da publicação */
 	Veiculo* Publicacao::getVeiculo(){
 		return this->veiculo;
 	}
