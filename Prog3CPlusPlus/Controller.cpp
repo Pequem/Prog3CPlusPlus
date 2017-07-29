@@ -17,6 +17,8 @@
 #include <string>
 #include <cstring>
 #include "Controller.h"
+/*Controller Ã© a classe responsavel pela leitura e escritas dos arquivos*/
+/*O construtor de Controller recebe como parametro os arquivos de entradas lidos como parametro em ProgCPlusPlus.cpp (onde se encontra a main)*/
 Controller::Controller(string d, string v, string p, string q, string r, string a) {
 	string qualiVector[8] = { string("A1"), string("A2"), string("B1"), string("B2"), string("B3"), string("B4"), string("B5"), string("C") };
 	for (string s : qualiVector) {
@@ -29,16 +31,21 @@ Controller::Controller(string d, string v, string p, string q, string r, string 
 	readRegras(r);
 	anoRecredenciamento = atoi(a.data());
 	cout << "Leitura Concluida" << endl;
-	WriteRecredenciamento();
+	//WriteRecredenciamento();
 	WriteListaPublicacoes();
 	WriteStatistics();
+	cout << "Escrita Concluida" << endl;
 }
+/*O destrutor destroi o Objeto Controller*/
 
 Controller::~Controller() {
 	for (Publicacao *p : publicacoes) {
 		delete(p);
 	}
 }
+/*O metodo readDocentes recebe como parametro o arquivo docentes.csv e verifica se hÃ¡ um arquivo caso nÃ£o seja valido ele joga um erro, caso sim, Ã© lido
+linha por linha e Ã© usado o Tokenizer do cpp_util fornecido pelo professor. Enquanto o arquivo estÃ¡ sendo lido estÃ¡ sendo feito um parse e adicionando em 
+um mapa de docentes onde long long (Codido) e Docente (Docente) sÃ£o a chave e o valor, respectivamente*/
 
 void Controller::readDocentes(string d){
     using namespace cpp_util;
@@ -58,12 +65,15 @@ void Controller::readDocentes(string d){
 		for (string &t1: token) {
 			trim(t1);
 		}
-		if (docentes.count(atoll(token.at(0).data()) > 0)) throw CustomException("Código repetido para docente: " + atoll(token.at(4).data()));
-		if (!(validDate(token.at(2), DATE_FORMAT_PT_BR_SHORT) && validDate(token.at(3), DATE_FORMAT_PT_BR_SHORT))) throw CustomException("Erro de formatação");
+		if (docentes.count(atoll(token.at(0).data()) > 0)) throw CustomException("Cï¿½digo repetido para docente: " + atoll(token.at(4).data()));
+		if (!(validDate(token.at(2), DATE_FORMAT_PT_BR_SHORT) && validDate(token.at(3), DATE_FORMAT_PT_BR_SHORT))) throw CustomException("Erro de formataï¿½ï¿½o");
 		docentes.insert(pair<long long, Docente*>(atoll(token.at(0).data()), new Docente(atoll(token.at(0).data()), token.at(1), parseDate(token.at(2), DATE_FORMAT_PT_BR_SHORT), parseDate(token.at(3), DATE_FORMAT_PT_BR_SHORT), token.at(4).compare("X") == 0 )));
     }
 	in.close();
 }
+/*O metodo readVeiculos recebe como parametro o arquivo veiculos.csv e verifica se hÃ¡ um arquivo caso nÃ£o seja valido ele joga um erro, caso sim, Ã© lido
+linha por linha e Ã© usado o Tokenizer do cpp_util fornecido pelo professor. Enquanto o arquivo estÃ¡ sendo lido estÃ¡ sendo feito um parse e adicionando em 
+um mapa de veiculos onde string (Codigo) e Veiculo (Veiculo) sÃ£o a chave e o valor, respectivamente*/
 
 void Controller::readVeiculos(string v) {
 	using namespace cpp_util;
@@ -83,16 +93,19 @@ void Controller::readVeiculos(string v) {
 		for (string &t1 : token) {
 			trim(t1);
 		}
-		if (veiculos.count(token.at(0)) > 0) throw CustomException("Código repetido para veículo: " + token.at(0));
+		if (veiculos.count(token.at(0)) > 0) throw CustomException("Cï¿½digo repetido para veï¿½culo: " + token.at(0));
 		if ((token.at(2).compare("C") == 0) || (token.at(2).compare("P") == 0)) {
 			veiculos.insert(pair<string, Veiculo*>(token.at(0), new Veiculo(token.at(0), token.at(1), token.at(2) , parseDouble(token.at(3), LOCALE_PT_BR), token.at(4))));
 		}else {
-			throw CustomException("Tipo de veículo desconhecido para veículo " + token.at(0) + ": " + token.at(2));
+			throw CustomException("Tipo de veï¿½culo desconhecido para veï¿½culo " + token.at(0) + ": " + token.at(2));
 		}
 	}
 	in.close();
 }
 
+/*O metodo readPublicacoes recebe como parametro o arquivo publicacoes.csv e verifica se hÃ¡ um arquivo caso nÃ£o seja valido ele joga um erro, caso sim, Ã© lido
+linha por linha e Ã© usado o Tokenizer do cpp_util fornecido pelo professor. Enquanto o arquivo estÃ¡ sendo lido estÃ¡ sendo feito um parse e adicionando em 
+um vector de publicaÃ§oes que pode ser uma conferencia ou um periodico */
 void Controller::readPublicacoes(string p) {
 	using namespace std;
 	using namespace cpp_util;
@@ -120,11 +133,11 @@ void Controller::readPublicacoes(string p) {
 		}
 		vector<Docente*> autores;
 		for (string autor : tokenAutores) {
-			if (docentes.count(atoll(autor.data())) == 0) throw CustomException("Código de docente não definido usado na publicação \"" + token.at(2) + "\": " + autor);
+			if (docentes.count(atoll(autor.data())) == 0) throw CustomException("Cï¿½digo de docente nï¿½o definido usado na publicaï¿½ï¿½o \"" + token.at(2) + "\": " + autor);
 			Docente *d1 = docentes.find(atoll(autor.data()))->second;
 			autores.insert(autores.end(), d1);
 		}
-		if (veiculos.count(token.at(1)) == 0) throw CustomException("Sigla de veículo não definida usada na publicação \"" + token.at(2) + "\": " + token.at(1));
+		if (veiculos.count(token.at(1)) == 0) throw CustomException("Sigla de veï¿½culo nï¿½o definida usada na publicaï¿½ï¿½o \"" + token.at(2) + "\": " + token.at(1));
 		Veiculo *v = veiculos.at(token.at(1));
 
 		if (v->getTipo().compare(string("C")) == 0) {
@@ -141,7 +154,9 @@ void Controller::readPublicacoes(string p) {
 	}
 	in.close();
 }
-
+/*O metodo readQualificacoes recebe como parametro o arquivo qualis.csv e verifica se hÃ¡ um arquivo caso nÃ£o seja valido ele joga um erro, caso sim, Ã© lido
+linha por linha e Ã© usado o Tokenizer do cpp_util fornecido pelo professor. Enquanto o arquivo estÃ¡ sendo lido estÃ¡ sendo feito um parse e adicionando em 
+um vector de qualificaÃ§oes, como todos os outros sempre vai sendo adicionado tambem onde Ã© necessario de acordo com as informaÃ§oes lidas*/
 void Controller::readQualificacoes(string q) {
 	using namespace std;
 	using namespace cpp_util;
@@ -160,8 +175,8 @@ void Controller::readQualificacoes(string q) {
 		for (string &t1 : token) {
 			trim(t1);
 		}
-		if (qualis.count(token.at(2)) == 0) throw CustomException("Qualis desconhecido para qualificação do veículo " + token.at(1) + " no ano " + token.at(0) + ": " + token.at(2));
-		if (veiculos.count(token.at(1)) == 0) throw CustomException("Sigla de veículo não definida usada na qualificação do ano \"" + token.at(0) + "\": " + token.at(1));
+		if (qualis.count(token.at(2)) == 0) throw CustomException("Qualis desconhecido para qualificaï¿½ï¿½o do veï¿½culo " + token.at(1) + " no ano " + token.at(0) + ": " + token.at(2));
+		if (veiculos.count(token.at(1)) == 0) throw CustomException("Sigla de veï¿½culo nï¿½o definida usada na qualificaï¿½ï¿½o do ano \"" + token.at(0) + "\": " + token.at(1));
 		Veiculo *v = veiculos.find(token.at(1))->second;
 		Qualificacao *q = new Qualificacao(atoi(token.at(0).data()), v, qualis.find(token.at(2))->second);
 		v->setQualificacao(q);
@@ -170,7 +185,9 @@ void Controller::readQualificacoes(string q) {
 	}
 	in.close();
 }
-
+/*O metodo readRegras recebe como parametro o arquivo regras.csv e verifica se hÃ¡ um arquivo caso nÃ£o seja valido ele joga um erro, caso sim, Ã© lido
+linha por linha e Ã© usado o Tokenizer do cpp_util fornecido pelo professor. Enquanto o arquivo estÃ¡ sendo lido estÃ¡ sendo feito um parse e adicionando em 
+regras pois cada ano de credenciamento segue apenas uma regra*/
 void Controller::readRegras(string r) {
 	using namespace std;
 	using namespace cpp_util;
@@ -205,16 +222,19 @@ void Controller::readRegras(string r) {
 		token1[_i] = trim(token1[_i]);
 		pontuacoes[_i]->setValor(atoi(token1[_i].data()));
 	}
-	if (!(validDate(token.at(0), DATE_FORMAT_PT_BR_SHORT) && validDate(token.at(1), DATE_FORMAT_PT_BR_SHORT))) throw CustomException("Erro de formatação");
+	if (!(validDate(token.at(0), DATE_FORMAT_PT_BR_SHORT) && validDate(token.at(1), DATE_FORMAT_PT_BR_SHORT))) throw CustomException("Erro de formataï¿½ï¿½o");
 	this->regras = new Regras(atof(token.at(4).data()), parseDate(token.at(0), DATE_FORMAT_PT_BR_SHORT), parseDate(token.at(1), DATE_FORMAT_PT_BR_SHORT), atoi(token.at(5).data()), atoi(token.at(6).data()), pontuacoes);
 	in.close();
 }
 
+/*O metodo WriteRecredenciamento, escreve o arquivo de saida de recredenciamento, verificando determinadas condiÃ§oes e mostrando se os docentes foram ou nao recredenciados 
+no ano*/
+
 void Controller::WriteRecredenciamento() {
 
-	ofstream out("recredenciamento.csv");
+	ofstream out("1-recredenciamento.csv");
 	if (!out.good()) throw CustomException("Erro de I/O");
-	out << "Docente;Pontuação;Recredenciado?" << endl;
+	out << "Docente;Pontuaï¿½ï¿½o;Recredenciado?" << endl;
 
 	for (pair<long long, Docente*> d : docentes) {
 		double pontuacao = d.second->getPontuacao(anoRecredenciamento, regras);
@@ -231,15 +251,18 @@ void Controller::WriteRecredenciamento() {
 			out << d.second->getNome() << tokenDelimit << pontuacao << tokenDelimit << "Sim" << endl;
 		}
 		else {
-			out << d.second->getNome() << tokenDelimit << pontuacao << tokenDelimit << "Não" << endl;
+			out << d.second->getNome() << tokenDelimit << pontuacao << tokenDelimit << "Nï¿½o" << endl;
 		}
 	}
 
 	out.close();
 }
 
+/*O metodo WriteListaPiblicacoes escreve o arquivo de saida 2-publicaÃ§oes.csv, onde Ã© ordenado seguindo regras (titulo,sigas,ano,nome) e depois Ã© impresso no arquivos as 
+informaÃ§oes das publicaÃ§oes cadastradas*/
+
 void Controller::WriteListaPublicacoes() {
-	ofstream out("recredenciamento.csv");
+	ofstream out("2-publicacoes.csv");
 	if (!out.good()) throw CustomException("Erro de I/O");
 
 	sort(publicacoes.begin(), publicacoes.end(), [](Publicacao *p1, Publicacao *p2) {
@@ -258,7 +281,7 @@ void Controller::WriteListaPublicacoes() {
 		return p1->getVeiculo()->getQualificacoes().at(0)->getQuali()->getNome().compare(p2->getVeiculo()->getQualificacoes().at(0)->getQuali()->getNome());
 	});
 
-	out << "Ano;Sigla Veículo;Veículo;Qualis;Fator de Impacto;Título;Docentes" << endl;
+	out << "Ano;Sigla Veï¿½culo;Veï¿½culo;Qualis;Fator de Impacto;Tï¿½tulo;Docentes" << endl;
 	
 	for (Publicacao *p : publicacoes) {
 		out << p->getAno() << tokenDelimit << p->getVeiculo()->getSigla() << tokenDelimit << p->getVeiculo()->getNome() <<
@@ -277,12 +300,13 @@ void Controller::WriteListaPublicacoes() {
 
 	out.close();
 }
+/*O metodo WriteStatistics escreve o arquivo 3-estatisticas.csv  que contem a razao de media de artigos por docentes com determinados qualis, quantos artigos com determinado qualis*/
 
 void Controller::WriteStatistics() {
 	ofstream out("3-estatisticas.csv");
 	if (!out.good()) throw CustomException("Erro de I/O");
 
-	out << "Qualis;Qtd. Artigos;Média Artigos / Docentes" << endl;
+	out << "Qualis;Qtd. Artigos;Mï¿½dia Artigos / Docentes" << endl;
 
 	for (pair<string, Qualis*> pq : qualis) {
 		out << pq.second->getNome() << tokenDelimit << pq.second->getPublicacoes().size() << tokenDelimit <<

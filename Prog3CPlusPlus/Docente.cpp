@@ -14,8 +14,10 @@
 #include "Docente.h"
 #include "Publicacao.h"
 #include <ctime>
+#include <iostream>
 namespace model {
-
+	/*O construtor de docente recebe o codigo, nome, data de nascimento, data de ingresso como parametro e se é ou nao um
+coordenador*/
 	Docente::Docente(long long cod,  string nome, time_t nascimento, time_t dataIngresso, bool coordenador) {
 		this->cod = cod;
 		this->nome = nome;
@@ -23,7 +25,7 @@ namespace model {
         this->dataIngresso = dataIngresso;
         this->coordenador = coordenador;
     }
-
+/*O método getPontuaçao verifica o numeros de publicaçoes do docente para calcular a sua pontuação, se maior que zero, será verificado quais anos devem ser considerados de acordo com as regras e roda uma lista de publicaçoes somando de acordo*/
 	double Docente::getPontuacao(int anoRecredenciamento, Regras* regras) {
 		double pontuacao = 0;
 		if (publicacoes.size() > 0) {
@@ -36,31 +38,33 @@ namespace model {
 		}
 		return pontuacao;
 	}
-
+/*O método setPublicacoes coloca uma devida publicaçao ao docente referido*/
 	void Docente::setPublicacoes(Publicacao *p) {
 		this->publicacoes.insert(this->publicacoes.end(), p);
 	}
-	
+	/*Verifica se é ou nao coordenador*/
 	bool Docente::isCoordenador() {
 		return this->coordenador;
 	}
-
+/*O método getNome retorna o nome do docente*/
 	string Docente::getNome() {
 		return nome;
 	}
-
+/*O método getAnoIngresso retorna o ano de ingresso do docente */
 	int Docente::getAnoIngresso() {
 		struct tm *tempo;
 		tempo = localtime(&this->dataIngresso);
-		return tempo->tm_year;
+		
+		return tempo->tm_year + 1900;
 	}
-
+/*O método getIdade retorna a idade do docente*/
 	int Docente::getIdade(int anoAtual) {
 		struct tm *tempo;
 		tempo = localtime(&this->nascimento);
-		return anoAtual - tempo->tm_year;
+	
+		return (anoAtual - tempo->tm_year + 1900);
 	}
-
+/*O destrutor de Docente destroi o Objeto Docente*/
     Docente::~Docente() {
     }
 }

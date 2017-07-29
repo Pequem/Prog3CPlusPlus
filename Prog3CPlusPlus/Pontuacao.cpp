@@ -14,23 +14,23 @@
 #include "Pontuacao.h"
 
 namespace model {
-
+	/*O contrutor de Pontuação recebe um valor e um qualis que será associado*/
     Pontuacao::Pontuacao(int valor, Qualis* quali) {
         this->valor = valor;
         this->quali= quali;
     }
-
+	/*O destrutor de pontuação destroi o objeto Pontuação*/
     Pontuacao::~Pontuacao() {
     }
-
+	/*O método getQuali retorna o valor do qualis*/
 	Qualis* Pontuacao::getQuali() {
 		return this->quali;
 	}
-
+	/*O método getValor retorna o valor da pontuação */
 	int Pontuacao::getValor() {
 		return this->valor;
 	}
-
+	/*O método setValor associa o valor decebido por parametro ao valor da pontuação*/
 	void Pontuacao::setValor(int value) {
 		this->valor = value;
 	}

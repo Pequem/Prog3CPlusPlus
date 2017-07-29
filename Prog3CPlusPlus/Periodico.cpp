@@ -13,12 +13,13 @@
 
 #include "Periodico.h"
 namespace model {
-
+    /*O construtor de Periodico (que é uma publicação) recebe o ano, o titulo, as paginas inical e final, o veiculo onde se encontra, o volume
+    uma lista de docentes que sao os autores */
     Periodico::Periodico(int ano, string titulo, int pagInicial, int pagFinal, int numero, Veiculo* veiculo, int volume, vector<Docente*> autores):
     Publicacao(ano, titulo, pagInicial, pagFinal, numero, veiculo, autores){
         this->volume = volume;
     }
-
+    /* O destrutor de Periodico destroi o objeto Periodico*/
     Periodico::~Periodico() {
     }
 }

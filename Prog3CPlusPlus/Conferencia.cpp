@@ -12,14 +12,17 @@
  */
 
 #include "Conferencia.h"
+
 namespace model {
     using namespace std;
+    /*O contrutor de Conferencia (que é uma publicalao) recebe ano da conferencia, titulo, pagina incial,pagina final, numero, veiculo em que se encontra, local e 
+docentes que participaram (autores) */
     Conferencia::Conferencia(int ano, string titulo, int pagInicial, int pagFinal, int numero, Veiculo* veiculo, string local, vector<Docente*> autores):
     Publicacao::Publicacao(ano, titulo, pagInicial, pagFinal, numero, veiculo, autores)
     {
         this->local = local;
     }
-
+/*O destutor de Conferencia , destroi o objeto Conferencia*/
     Conferencia::~Conferencia() {
     }
 }

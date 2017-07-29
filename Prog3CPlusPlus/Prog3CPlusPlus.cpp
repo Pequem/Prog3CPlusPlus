@@ -1,4 +1,4 @@
-// Prog3CPlusPlus.cpp : Define o ponto de entrada para a aplicação de console.
+// Prog3CPlusPlus.cpp : Define o ponto de entrada para a aplicaï¿½ï¿½o de console.
 //
 
 #include <iostream>
@@ -8,6 +8,9 @@
 #include "classMap.h"
 #include "Controller.h"
 #include "CustomException.h"
+/*O metodo main recebe como parametro os arquivos e o ano de credenciamento
+Como os parametros podem ser lidos em qualquer ordem eles estÃ£o sendo lidos em  uma string primeiro e depois serÃ£o passadas como parametro
+para Controller*/
 int main(int argc, char **argv)
 {
 	using namespace std;
