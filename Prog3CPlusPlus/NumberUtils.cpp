@@ -29,13 +29,13 @@ double parseDouble(const string& str, const locale& loc) {
 }
 
 /* Converts decimal numbers from double format to text, following a locale configuration. */
-string formatDouble(const double num, const locale& loc) {
+string formatDouble(const double num, int precision, const locale& loc) {
 	// Creates an empty string stream and applies the specified locale to it.
 	stringstream stream;
 	stream.imbue(loc);
 
 	// Uses the << operator to "print" the double value in the stream and returns its contents.
-	stream << fixed << num;
+	stream << fixed << setprecision(precision) << num;
 	return stream.str();
 }
 

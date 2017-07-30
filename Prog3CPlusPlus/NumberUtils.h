@@ -25,7 +25,7 @@ static const locale LOCALE_PT_BR(locale(), new NumPunctPTBR());
 double parseDouble(const string&, const locale&);
 
 /* Converts decimal numbers from double format to text, following a locale configuration. */
-string formatDouble(const double, const locale&);
+string formatDouble(const double, int precision, const locale&);
 
 /* Converts decimal numbers from double format to currency, following a locale configuration. */
 string formatDoubleCurrency(const double, const locale&);

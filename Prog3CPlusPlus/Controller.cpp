@@ -274,27 +274,27 @@ void Controller::WriteListaPublicacoes() {
 	if (!out.good()) throw CustomException("Erro de I/O");
 
 	
-	sort(publicacoes.begin(), publicacoes.end(),[]( Publicacao *p1, Publicacao *p2) {
-		return p1->getTitulo() < p2->getTitulo();
+	stable_sort(publicacoes.begin(), publicacoes.end(),[]( Publicacao *p1, Publicacao *p2) {
+		return p1->getTitulo().compare(p2->getTitulo()) < 0;
 			
 		
 	});
 	
-	sort(publicacoes.begin(), publicacoes.end(),[] ( Publicacao *p1, Publicacao *p2) {
-		return (p1->getVeiculo()->getSigla() < p2->getVeiculo()->getSigla());
+	stable_sort(publicacoes.begin(), publicacoes.end(),[] ( Publicacao *p1, Publicacao *p2) {
+		return (p1->getVeiculo()->getSigla().compare(p2->getVeiculo()->getSigla())) < 0;
 		
 		
 	});
 
-	sort(publicacoes.begin(), publicacoes.end(),[] (Publicacao *p1, Publicacao *p2) {
-		return((p1->getAno() - p2->getAno()) < 0);
+	stable_sort(publicacoes.begin(), publicacoes.end(),[] (Publicacao *p1, Publicacao *p2) {
+		return((p1->getAno() - p2->getAno()) > 0);
 		
 		
 	
 	});
 
-	sort(publicacoes.begin(), publicacoes.end(), []( Publicacao *p1,Publicacao *p2) {
-		return p1->getVeiculo()->getQualificacoes().at(0)->getQuali()->getNome() < p2->getVeiculo()->getQualificacoes().at(0)->getQuali()->getNome();
+	stable_sort(publicacoes.begin(), publicacoes.end(), []( Publicacao *p1,Publicacao *p2) {
+		return p1->getVeiculo()->getQualificacoes().at(0)->getQuali()->getNome().compare(p2->getVeiculo()->getQualificacoes().at(0)->getQuali()->getNome()) < 0;
 		
 		});
 
@@ -303,12 +303,13 @@ void Controller::WriteListaPublicacoes() {
 	for (Publicacao *p : publicacoes) {
 		out << p->getAno() << tokenDelimit << p->getVeiculo()->getSigla() << tokenDelimit << p->getVeiculo()->getNome() <<
 			tokenDelimit << p->getVeiculo()->getQualificacoes().at(0)->getQuali()->getNome() << tokenDelimit <<
-			p->getVeiculo()->getFatorDeImpacto() << tokenDelimit << p->getTitulo() << tokenDelimit;
+			cpp_util::formatDouble(p->getVeiculo()->getFatorDeImpacto(), 3, cpp_util::LOCALE_PT_BR) << tokenDelimit << p->getTitulo() << tokenDelimit;
 
 		unsigned int tam = 0;
 		for (Docente *d : p->getAutores()) {
 			out << d->getNome();
 			if (tam < (p->getAutores().size() - 1)) {
+				tam++;
 				out << ',';
 			}
 		}
@@ -326,7 +327,7 @@ void Controller::WriteStatistics() {
 	ofstream out("3-estatisticas.csv");
 	if (!out.good()) throw CustomException("Erro de I/O");
 
-	out << "Qualis;Qtd. Artigos;Média Artigos / Docentes" << endl;
+	out << "Qualis;Qtd. Artigos;Média Artigos / Docente" << endl;
 
 	for (pair<string, Qualis*> pq : qualis) {
 		
