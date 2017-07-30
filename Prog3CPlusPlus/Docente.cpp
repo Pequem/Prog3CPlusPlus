@@ -31,7 +31,7 @@ coordenador*/
 		if (publicacoes.size() > 0) {
 			int anoInicio = anoRecredenciamento - regras->getQtdAnos();
 			for(Publicacao *p: publicacoes){
-				if (p->getAno() >= anoInicio && p->getAno() < anoRecredenciamento) {
+				if ((p->getAno() >= anoInicio) && (p->getAno() < anoRecredenciamento)) {
 					pontuacao += p->calcularPontos(anoRecredenciamento, regras);
 				}
 			}
@@ -55,14 +55,14 @@ coordenador*/
 		struct tm *tempo;
 		tempo = localtime(&this->dataIngresso);
 		
-		return tempo->tm_year + 1900;
+		return(tempo->tm_year + 1900);
 	}
 /*O método getIdade retorna a idade do docente*/
 	int Docente::getIdade(int anoAtual) {
 		struct tm *tempo;
 		tempo = localtime(&this->nascimento);
 	
-		return (anoAtual - tempo->tm_year + 1900);
+		return (anoAtual - (tempo->tm_year + 1900));
 	}
 /*O destrutor de Docente destroi o Objeto Docente*/
     Docente::~Docente() {

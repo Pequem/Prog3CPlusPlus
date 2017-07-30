@@ -37,14 +37,14 @@ namespace model {
 	/*O método calcularPontos calcula os pontos da publicaçao aplicando um fator multiplicador dependendo do seu tipo e seguindo determinadas
 	regras dependendo do ano*/
 	double Publicacao::calcularPontos(int ano, Regras* regras) {
-		double pontuacao = 0;
+		double pontuacao = 0.0;
 
 		for (Qualificacao *q : this->veiculo->getQualificacoes()) {
 			if (regras->getPontuacoesRegraByQuali(q->getQuali()) == NULL) continue;
 			if (this->veiculo->getTipo().compare(string("P")) == 0) {
-				pontuacao += (regras->getFatorMult() * regras->getPontuacoesRegraByQuali(q->getQuali())->getValor());
+				pontuacao += (regras->getFatorMult() * (regras->getPontuacoesRegraByQuali(q->getQuali())->getValor()));
 			}
-			else {
+			else if (this->veiculo->getTipo().compare(string("C")) == 0){
 				pontuacao += regras->getPontuacoesRegraByQuali(q->getQuali())->getValor();
 			}
 		}

@@ -16,6 +16,9 @@
 #include <ctime>
 #include <string>
 #include <cstring>
+#include <sstream>
+#include <clocale>
+#include <iomanip>
 #include "Controller.h"
 /*Controller é a classe responsavel pela leitura e escritas dos arquivos*/
 /*O construtor de Controller recebe como parametro os arquivos de entradas lidos como parametro em ProgCPlusPlus.cpp (onde se encontra a main)*/
@@ -24,6 +27,7 @@ Controller::Controller(string d, string v, string p, string q, string r, string 
 	for (string s : qualiVector) {
 		qualis.insert(pair<string, Qualis*>(s, new Qualis(s)));
 	}
+	
 	readDocentes(d);
 	readVeiculos(v);
 	readPublicacoes(p);
@@ -31,7 +35,7 @@ Controller::Controller(string d, string v, string p, string q, string r, string 
 	readRegras(r);
 	anoRecredenciamento = atoi(a.data());
 	cout << "Leitura Concluida" << endl;
-	//WriteRecredenciamento();
+	WriteRecredenciamento();
 	WriteListaPublicacoes();
 	WriteStatistics();
 	cout << "Escrita Concluida" << endl;
@@ -65,8 +69,8 @@ void Controller::readDocentes(string d){
 		for (string &t1: token) {
 			trim(t1);
 		}
-		if (docentes.count(atoll(token.at(0).data()) > 0)) throw CustomException("C�digo repetido para docente: " + atoll(token.at(4).data()));
-		if (!(validDate(token.at(2), DATE_FORMAT_PT_BR_SHORT) && validDate(token.at(3), DATE_FORMAT_PT_BR_SHORT))) throw CustomException("Erro de formata��o");
+		if (docentes.count(atoll(token.at(0).data()) > 0)) throw CustomException("Código repetido para docente: " + atoll(token.at(4).data()));
+		if (!(validDate(token.at(2), DATE_FORMAT_PT_BR_SHORT) && validDate(token.at(3), DATE_FORMAT_PT_BR_SHORT))) throw CustomException("Erro de formatação");
 		docentes.insert(pair<long long, Docente*>(atoll(token.at(0).data()), new Docente(atoll(token.at(0).data()), token.at(1), parseDate(token.at(2), DATE_FORMAT_PT_BR_SHORT), parseDate(token.at(3), DATE_FORMAT_PT_BR_SHORT), token.at(4).compare("X") == 0 )));
     }
 	in.close();
@@ -93,11 +97,11 @@ void Controller::readVeiculos(string v) {
 		for (string &t1 : token) {
 			trim(t1);
 		}
-		if (veiculos.count(token.at(0)) > 0) throw CustomException("C�digo repetido para ve�culo: " + token.at(0));
+		if (veiculos.count(token.at(0)) > 0) throw CustomException("Código repetido para veículo: " + token.at(0));
 		if ((token.at(2).compare("C") == 0) || (token.at(2).compare("P") == 0)) {
 			veiculos.insert(pair<string, Veiculo*>(token.at(0), new Veiculo(token.at(0), token.at(1), token.at(2) , parseDouble(token.at(3), LOCALE_PT_BR), token.at(4))));
 		}else {
-			throw CustomException("Tipo de ve�culo desconhecido para ve�culo " + token.at(0) + ": " + token.at(2));
+			throw CustomException("Tipo de veículo desconhecido para veículo " + token.at(0) + ": " + token.at(2));
 		}
 	}
 	in.close();
@@ -133,11 +137,11 @@ void Controller::readPublicacoes(string p) {
 		}
 		vector<Docente*> autores;
 		for (string autor : tokenAutores) {
-			if (docentes.count(atoll(autor.data())) == 0) throw CustomException("C�digo de docente n�o definido usado na publica��o \"" + token.at(2) + "\": " + autor);
+			if (docentes.count(atoll(autor.data())) == 0) throw CustomException("Código de docente não definido usado na publicação \"" + token.at(2) + "\": " + autor);
 			Docente *d1 = docentes.find(atoll(autor.data()))->second;
 			autores.insert(autores.end(), d1);
 		}
-		if (veiculos.count(token.at(1)) == 0) throw CustomException("Sigla de ve�culo n�o definida usada na publica��o \"" + token.at(2) + "\": " + token.at(1));
+		if (veiculos.count(token.at(1)) == 0) throw CustomException("Sigla de veículo não definida usada na publicação \"" + token.at(2) + "\": " + token.at(1));
 		Veiculo *v = veiculos.at(token.at(1));
 
 		if (v->getTipo().compare(string("C")) == 0) {
@@ -175,8 +179,8 @@ void Controller::readQualificacoes(string q) {
 		for (string &t1 : token) {
 			trim(t1);
 		}
-		if (qualis.count(token.at(2)) == 0) throw CustomException("Qualis desconhecido para qualifica��o do ve�culo " + token.at(1) + " no ano " + token.at(0) + ": " + token.at(2));
-		if (veiculos.count(token.at(1)) == 0) throw CustomException("Sigla de ve�culo n�o definida usada na qualifica��o do ano \"" + token.at(0) + "\": " + token.at(1));
+		if (qualis.count(token.at(2)) == 0) throw CustomException("Qualis desconhecido para qualificação do veículo " + token.at(1) + " no ano " + token.at(0) + ": " + token.at(2));
+		if (veiculos.count(token.at(1)) == 0) throw CustomException("Sigla de veículo não definida usada na qualificação do ano \"" + token.at(0) + "\": " + token.at(1));
 		Veiculo *v = veiculos.find(token.at(1))->second;
 		Qualificacao *q = new Qualificacao(atoi(token.at(0).data()), v, qualis.find(token.at(2))->second);
 		v->setQualificacao(q);
@@ -222,7 +226,7 @@ void Controller::readRegras(string r) {
 		token1[_i] = trim(token1[_i]);
 		pontuacoes[_i]->setValor(atoi(token1[_i].data()));
 	}
-	if (!(validDate(token.at(0), DATE_FORMAT_PT_BR_SHORT) && validDate(token.at(1), DATE_FORMAT_PT_BR_SHORT))) throw CustomException("Erro de formata��o");
+	if (!(validDate(token.at(0), DATE_FORMAT_PT_BR_SHORT) && validDate(token.at(1), DATE_FORMAT_PT_BR_SHORT))) throw CustomException("Erro de formatação");
 	this->regras = new Regras(atof(token.at(4).data()), parseDate(token.at(0), DATE_FORMAT_PT_BR_SHORT), parseDate(token.at(1), DATE_FORMAT_PT_BR_SHORT), atoi(token.at(5).data()), atoi(token.at(6).data()), pontuacoes);
 	in.close();
 }
@@ -234,15 +238,18 @@ void Controller::WriteRecredenciamento() {
 
 	ofstream out("1-recredenciamento.csv");
 	if (!out.good()) throw CustomException("Erro de I/O");
-	out << "Docente;Pontua��o;Recredenciado?" << endl;
+	out << "Docente;Pontuação;Recredenciado?" << endl;
+
 
 	for (pair<long long, Docente*> d : docentes) {
 		double pontuacao = d.second->getPontuacao(anoRecredenciamento, regras);
+		
+
 		if (d.second->isCoordenador()) {
 			out << d.second->getNome() << tokenDelimit << pontuacao << tokenDelimit << "Coordenador" << endl;
 		}
 		else if ((anoRecredenciamento - d.second->getAnoIngresso()) < 3) {
-			out << d.second->getNome() << tokenDelimit << pontuacao << "PPJ" << endl;
+			out << d.second->getNome() << tokenDelimit << pontuacao <<  tokenDelimit << "PPJ" << endl;
 		}
 		else if (d.second->getIdade(anoRecredenciamento) > 60) {
 			out << d.second->getNome() << tokenDelimit << pontuacao << tokenDelimit << "PPS" << endl;
@@ -251,7 +258,7 @@ void Controller::WriteRecredenciamento() {
 			out << d.second->getNome() << tokenDelimit << pontuacao << tokenDelimit << "Sim" << endl;
 		}
 		else {
-			out << d.second->getNome() << tokenDelimit << pontuacao << tokenDelimit << "N�o" << endl;
+			out << d.second->getNome() << tokenDelimit << pontuacao << tokenDelimit << "Não" << endl;
 		}
 	}
 
@@ -263,25 +270,35 @@ informaçoes das publicaçoes cadastradas*/
 
 void Controller::WriteListaPublicacoes() {
 	ofstream out("2-publicacoes.csv");
+
 	if (!out.good()) throw CustomException("Erro de I/O");
 
-	sort(publicacoes.begin(), publicacoes.end(), [](Publicacao *p1, Publicacao *p2) {
-		return p1->getTitulo().compare(p2->getTitulo());
+	
+	sort(publicacoes.begin(), publicacoes.end(),[]( Publicacao *p1, Publicacao *p2) {
+		return p1->getTitulo() < p2->getTitulo();
+			
+		
+	});
+	
+	sort(publicacoes.begin(), publicacoes.end(),[] ( Publicacao *p1, Publicacao *p2) {
+		return (p1->getVeiculo()->getSigla() < p2->getVeiculo()->getSigla());
+		
+		
 	});
 
-	sort(publicacoes.begin(), publicacoes.end(), [](Publicacao *p1, Publicacao *p2) {
-		return p1->getVeiculo()->getSigla().compare(p2->getVeiculo()->getSigla());
+	sort(publicacoes.begin(), publicacoes.end(),[] (Publicacao *p1, Publicacao *p2) {
+		return((p1->getAno() - p2->getAno()) < 0);
+		
+		
+	
 	});
 
-	sort(publicacoes.begin(), publicacoes.end(), [](Publicacao *p1, Publicacao *p2) {
-		return p2->getAno() - p1->getAno();
-	});
+	sort(publicacoes.begin(), publicacoes.end(), []( Publicacao *p1,Publicacao *p2) {
+		return p1->getVeiculo()->getQualificacoes().at(0)->getQuali()->getNome() < p2->getVeiculo()->getQualificacoes().at(0)->getQuali()->getNome();
+		
+		});
 
-	sort(publicacoes.begin(), publicacoes.end(), [](Publicacao *p1, Publicacao *p2) {
-		return p1->getVeiculo()->getQualificacoes().at(0)->getQuali()->getNome().compare(p2->getVeiculo()->getQualificacoes().at(0)->getQuali()->getNome());
-	});
-
-	out << "Ano;Sigla Ve�culo;Ve�culo;Qualis;Fator de Impacto;T�tulo;Docentes" << endl;
+	out << "Ano;Sigla Veículo;Veículo;Qualis;Fator de Impacto;Título;Docentes" << endl;
 	
 	for (Publicacao *p : publicacoes) {
 		out << p->getAno() << tokenDelimit << p->getVeiculo()->getSigla() << tokenDelimit << p->getVeiculo()->getNome() <<
@@ -300,17 +317,22 @@ void Controller::WriteListaPublicacoes() {
 
 	out.close();
 }
+
+
 /*O metodo WriteStatistics escreve o arquivo 3-estatisticas.csv  que contem a razao de media de artigos por docentes com determinados qualis, quantos artigos com determinado qualis*/
 
 void Controller::WriteStatistics() {
+	
 	ofstream out("3-estatisticas.csv");
 	if (!out.good()) throw CustomException("Erro de I/O");
 
-	out << "Qualis;Qtd. Artigos;M�dia Artigos / Docentes" << endl;
+	out << "Qualis;Qtd. Artigos;Média Artigos / Docentes" << endl;
 
 	for (pair<string, Qualis*> pq : qualis) {
+		
 		out << pq.second->getNome() << tokenDelimit << pq.second->getPublicacoes().size() << tokenDelimit <<
-			cpp_util::formatDouble(pq.second->getRatio(), cpp_util::LOCALE_PT_BR)  << endl;
+		 cpp_util::formatDoubleCurrency(pq.second->getRatio(),cpp_util::LOCALE_PT_BR) << endl;
 	}
+	
 	out.close();
 }
