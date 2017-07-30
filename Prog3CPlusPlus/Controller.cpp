@@ -19,6 +19,7 @@
 #include <sstream>
 #include <clocale>
 #include <iomanip>
+#include <algorithm>
 #include "Controller.h"
 /*Controller é a classe responsavel pela leitura e escritas dos arquivos*/
 /*O construtor de Controller recebe como parametro os arquivos de entradas lidos como parametro em ProgCPlusPlus.cpp (onde se encontra a main)*/
@@ -239,26 +240,32 @@ void Controller::WriteRecredenciamento() {
 	ofstream out("1-recredenciamento.csv");
 	if (!out.good()) throw CustomException("Erro de I/O");
 	out << "Docente;Pontuação;Recredenciado?" << endl;
+	vector<Docente*> _docentes;
+	for (pair<long long, Docente*> d: docentes) {
+		_docentes.insert(_docentes.begin(), d.second);
+	}
+	sort(_docentes.begin(), _docentes.end(), [](Docente *d1, Docente *d2) {
+		return d1->getNome().compare(d2->getNome()) < 0;
+	});
 
-
-	for (pair<long long, Docente*> d : docentes) {
-		double pontuacao = d.second->getPontuacao(anoRecredenciamento, regras);
+	for (Docente* d : _docentes) {
+		double pontuacao = d->getPontuacao(anoRecredenciamento, regras);
 		
 
-		if (d.second->isCoordenador()) {
-			out << d.second->getNome() << tokenDelimit << pontuacao << tokenDelimit << "Coordenador" << endl;
+		if (d->isCoordenador()) {
+			out << d->getNome() << tokenDelimit << pontuacao << tokenDelimit << "Coordenador" << endl;
 		}
-		else if ((anoRecredenciamento - d.second->getAnoIngresso()) < 3) {
-			out << d.second->getNome() << tokenDelimit << pontuacao <<  tokenDelimit << "PPJ" << endl;
+		else if ((anoRecredenciamento - d->getAnoIngresso()) < 3) {
+			out << d->getNome() << tokenDelimit << pontuacao <<  tokenDelimit << "PPJ" << endl;
 		}
-		else if (d.second->getIdade(anoRecredenciamento) > 60) {
-			out << d.second->getNome() << tokenDelimit << pontuacao << tokenDelimit << "PPS" << endl;
+		else if (d->getIdade(anoRecredenciamento) > 60) {
+			out << d->getNome() << tokenDelimit << pontuacao << tokenDelimit << "PPS" << endl;
 		}
 		else if (pontuacao >= regras->getPontMin()) {
-			out << d.second->getNome() << tokenDelimit << pontuacao << tokenDelimit << "Sim" << endl;
+			out << d->getNome() << tokenDelimit << pontuacao << tokenDelimit << "Sim" << endl;
 		}
 		else {
-			out << d.second->getNome() << tokenDelimit << pontuacao << tokenDelimit << "Não" << endl;
+			out << d->getNome() << tokenDelimit << pontuacao << tokenDelimit << "Não" << endl;
 		}
 	}
 
