@@ -27,6 +27,9 @@ namespace model {
 	Veiculo* Qualificacao::getVeiculo() {
 		return this->veiculo;
 	}
+	int Qualificacao::getAno() {
+		return ano;
+	}
 	/*O destrutor da qualificaçao destroi o objeto Qualificaçao*/
     Qualificacao::~Qualificacao() {
     }

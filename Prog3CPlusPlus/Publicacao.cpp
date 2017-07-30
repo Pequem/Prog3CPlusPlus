@@ -12,7 +12,7 @@
  */
 
 #include "Publicacao.h"
-
+#include <algorithm>
 namespace model {
 	/*O contrustor de Publicação recebe como parametros, ano, titulo, paginas inicial e final, numero, veiculo em que se encontra e 
 	lista de docentes que são os autores*/
@@ -38,15 +38,15 @@ namespace model {
 	regras dependendo do ano*/
 	double Publicacao::calcularPontos(int ano, Regras* regras) {
 		double pontuacao = 0.0f;
-
-		for (Qualificacao *q : this->veiculo->getQualificacoes()) {
-			if (regras->getPontuacoesRegraByQuali(q->getQuali()) == NULL) continue;
-			if (this->veiculo->getTipo().compare(string("P")) == 0) {
-				pontuacao += (regras->getFatorMult() * (regras->getPontuacoesRegraByQuali(q->getQuali())->getValor()));
-			}
-			else if (this->veiculo->getTipo().compare(string("C")) == 0){
-				pontuacao += regras->getPontuacoesRegraByQuali(q->getQuali())->getValor();
-			}
+		Qualificacao *q = this->veiculo->getQualificacoes()[0];
+		for (Qualificacao *_q : this->veiculo->getQualificacoes()) {
+			if (q->getAno() < _q->getAno()) q = _q;
+		}
+		if (this->veiculo->getTipo().compare(string("P")) == 0) {
+			pontuacao += (regras->getFatorMult() * (regras->getPontuacoesRegraByQuali(q->getQuali())->getValor()));
+		}
+		else if (this->veiculo->getTipo().compare(string("C")) == 0){
+			pontuacao += regras->getPontuacoesRegraByQuali(q->getQuali())->getValor();
 		}
 
 		return pontuacao;

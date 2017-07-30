@@ -22,6 +22,7 @@ namespace model {
         Qualificacao(int ano, Veiculo* veiculo, Qualis* quali);
 		Qualis* getQuali();
 		Veiculo* getVeiculo();
+		int getAno();
         virtual ~Qualificacao();
     private:
         int ano;

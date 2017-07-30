@@ -248,24 +248,25 @@ void Controller::WriteRecredenciamento() {
 		return d1->getNome().compare(d2->getNome()) < 0;
 	});
 
+
 	for (Docente* d : _docentes) {
 		double pontuacao = d->getPontuacao(anoRecredenciamento, regras);
 		
 
 		if (d->isCoordenador()) {
-			out << d->getNome() << tokenDelimit << pontuacao << tokenDelimit << "Coordenador" << endl;
+			out << d->getNome() << tokenDelimit << cpp_util::formatDouble(pontuacao, 1, cpp_util::LOCALE_PT_BR) << tokenDelimit << "Coordenador" << endl;
 		}
 		else if ((anoRecredenciamento - d->getAnoIngresso()) < 3) {
-			out << d->getNome() << tokenDelimit << pontuacao <<  tokenDelimit << "PPJ" << endl;
+			out << d->getNome() << tokenDelimit << cpp_util::formatDouble(pontuacao, 1, cpp_util::LOCALE_PT_BR) <<  tokenDelimit << "PPJ" << endl;
 		}
 		else if (d->getIdade(anoRecredenciamento) > 60) {
-			out << d->getNome() << tokenDelimit << pontuacao << tokenDelimit << "PPS" << endl;
+			out << d->getNome() << tokenDelimit << cpp_util::formatDouble(pontuacao, 1, cpp_util::LOCALE_PT_BR) << tokenDelimit << "PPS" << endl;
 		}
 		else if (pontuacao >= regras->getPontMin()) {
-			out << d->getNome() << tokenDelimit << pontuacao << tokenDelimit << "Sim" << endl;
+			out << d->getNome() << tokenDelimit << cpp_util::formatDouble(pontuacao, 1, cpp_util::LOCALE_PT_BR) << tokenDelimit << "Sim" << endl;
 		}
 		else {
-			out << d->getNome() << tokenDelimit << pontuacao << tokenDelimit << "Não" << endl;
+			out << d->getNome() << tokenDelimit << cpp_util::formatDouble(pontuacao, 1, cpp_util::LOCALE_PT_BR) << tokenDelimit << "Não" << endl;
 		}
 	}
 
