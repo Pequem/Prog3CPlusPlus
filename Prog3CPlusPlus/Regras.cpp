@@ -42,7 +42,7 @@ namespace model {
 			
 		}
 		
-		//std::cout << "What the FUCK";
+	
 	}
 	/*O método getPontMin retorna o valor da pontuação minima*/
 	int Regras::getPontMin() {

@@ -71,10 +71,21 @@ void Controller::readDocentes(string d){
 		for (string &t1: token) {
 			trim(t1);
 		}
-		if (docentes.count(atoll(token.at(0).data()))> 0 ) throw CustomException("Código repetido para docente: " + token.at(0) + ".");
-		if (!(validDate(token.at(2), DATE_FORMAT_PT_BR_SHORT) && validDate(token.at(3), DATE_FORMAT_PT_BR_SHORT))) throw CustomException("Erro de formatação");
+		try{
+		long long nb1 = atoll(token.at(0).data());
+		string nb2 = token.at(2);
+		string nb3 = token.at(3);
+		}catch(std::exception& e){throw CustomException("Erro de formatação");}
+
+		if (docentes.count(atoll(token.at(0).data())) > 0 ) throw CustomException("Código repetido para docente: " + token.at(0) + ".");
+		if (!(validDate(token.at(2), DATE_FORMAT_PT_BR_SHORT) && validDate(token.at(3), DATE_FORMAT_PT_BR_SHORT) )) throw CustomException("Erro de formatação");
+		
+
 		docentes.insert(pair<long long, Docente*>(atoll(token.at(0).data()), new Docente(atoll(token.at(0).data()), token.at(1), parseDate(token.at(2), DATE_FORMAT_PT_BR_SHORT), parseDate(token.at(3), DATE_FORMAT_PT_BR_SHORT), token.at(4).compare("X") == 0 )));
-    }
+    
+		
+
+	}
 	in.close();
 }
 /*O metodo readVeiculos recebe como parametro o arquivo veiculos.csv e verifica se há um arquivo caso não seja valido ele joga um erro, caso sim, é lido
@@ -99,8 +110,17 @@ void Controller::readVeiculos(string v) {
 		for (string &t1 : token) {
 			trim(t1);
 		}
+		try{
+		string nb1 = token.at(0);
+		string nb2 = token.at(2);
+		string nb3 = token.at(3);
+		double nb33 = parseDouble(token.at(3), LOCALE_PT_BR);
+		string nb4 = token.at(4);
+		}catch(std::exception& e){throw CustomException("Erro de formatação");}
+
 		if (veiculos.count(token.at(0)) > 0) throw CustomException("Código repetido para veículo: " + token.at(0) + ".");
 		if ((token.at(2).compare("C") == 0) || (token.at(2).compare("P") == 0)) {
+
 			veiculos.insert(pair<string, Veiculo*>(token.at(0), new Veiculo(token.at(0), token.at(1), token.at(2) , parseDouble(token.at(3), LOCALE_PT_BR), token.at(4))));
 		}else {
 			throw CustomException("Tipo de veículo desconhecido para veículo " + token.at(0) + ": " + token.at(2) + ".");
@@ -137,6 +157,23 @@ void Controller::readPublicacoes(string p) {
 		for (string &t1 : tokenAutores) {
 			trim(t1);
 		}
+
+		try{
+		string nb1 = token.at(0);
+		string nb10 = token.at(1);
+		int nb11 = atoi(token.at(0).data());
+		string nb2 = token.at(2);
+		string nb3 = token.at(3);
+		double nb33 = parseDouble(token.at(3), LOCALE_PT_BR);
+		string nb4 = token.at(4);
+		int nb44 = atoi(token.at(4).data());
+		string nb6 = token.at(6);
+		int nb7 = atoi(token.at(7).data());
+		int nb8 = atoi(token.at(8).data());
+		}catch(std::exception& e){throw CustomException("Erro de formatação");}
+
+
+
 		vector<Docente*> autores;
 		for (string autor : tokenAutores) {
 			if (docentes.count(atoll(autor.data())) == 0) throw CustomException("Código de docente não definido usado na publicação \"" + token.at(2) + "\": " + autor + ".");
@@ -181,6 +218,14 @@ void Controller::readQualificacoes(string q) {
 		for (string &t1 : token) {
 			trim(t1);
 		}
+
+		try{
+		string nb1 = token.at(0);
+		string nb11 = token.at(1);
+		string nb2 = token.at(2);
+		
+		}catch(std::exception& e){throw CustomException("Erro de formatação");}
+
 		if (qualis.count(token.at(2)) == 0) throw CustomException("Qualis desconhecido para qualificação do veículo " + token.at(1) + " no ano " + token.at(0) + ": " + token.at(2) + ".");
 		if (veiculos.count(token.at(1)) == 0) throw CustomException("Sigla de veículo não definida usada na qualificação do ano \"" + token.at(0) + "\": " + token.at(1) + ".");
 		Veiculo *v = veiculos.find(token.at(1))->second;
@@ -250,10 +295,27 @@ void Controller::readRegras(string r) {
 	}
 
 
+		try{
+		string nb01 = token.at(0);
+		string nb011 = token.at(1);
+		string nb02 = token.at(2);
+		string nb05 = token.at(5);
+		string nb06 = token.at(6);
+		string nb04 = token.at(4);
+		}catch(std::exception& e){throw CustomException("Erro de formatação");}
 
 
 
-	if (!(validDate(token.at(0), DATE_FORMAT_PT_BR_SHORT) && validDate(token.at(1), DATE_FORMAT_PT_BR_SHORT))) throw CustomException("Erro de formatação");
+	if (!(validDate(token.at(0), DATE_FORMAT_PT_BR_SHORT) && validDate(token.at(1), DATE_FORMAT_PT_BR_SHORT)) ) throw CustomException("Erro de formatação");
+
+		try{
+		int nb1 = atoi(token.at(5).data());
+		int nb2 = atoi(token.at(6).data());
+		double nb3 = atof(token.at(4).data());
+		
+		}catch(std::exception& e){
+			throw CustomException("Erro de formatação");
+		}
 	this->regras = new Regras(atof(token.at(4).data()), parseDate(token.at(0), DATE_FORMAT_PT_BR_SHORT), parseDate(token.at(1), DATE_FORMAT_PT_BR_SHORT), atoi(token.at(5).data()), atoi(token.at(6).data()), pont2);
 	in.close();
 }
@@ -282,7 +344,7 @@ void Controller::WriteRecredenciamento() {
 		if (d->isCoordenador()) {
 			out << d->getNome() << tokenDelimit << cpp_util::formatDouble(pontuacao, 1, cpp_util::LOCALE_PT_BR) << tokenDelimit << "Coordenador" << endl;
 		}
-		else if ((anoRecredenciamento - d->getAnoIngresso()) < 3) {
+		else if ((anoRecredenciamento - d->getAnoIngresso()) <= 3) {
 			out << d->getNome() << tokenDelimit << cpp_util::formatDouble(pontuacao, 1, cpp_util::LOCALE_PT_BR) <<  tokenDelimit << "PPJ" << endl;
 		}
 		else if (d->getIdade(anoRecredenciamento) > 60) {

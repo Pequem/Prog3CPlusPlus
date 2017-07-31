@@ -1,31 +1,31 @@
 Ano;Sigla Veículo;Veículo;Qualis;Fator de Impacto;Título;Docentes
-2015;NC;NEURAL COMPUTATION;A1;31,000;A arte do desapego: abrindo mão da família para ganhar a guerra;Stannis Baratheon
-2015;NC;NEURAL COMPUTATION;A1;31,000;Mão do Rei: como governar sua cidade;Tyrion Lannister
-2015;TEC;IEEE TRANSACTIONS ON EVOLUTIONARY COMPUTATION;A1;0,000;O que dizer para o Deus da Morte?;Arya Stark
-2015;TEC;IEEE TRANSACTIONS ON EVOLUTIONARY COMPUTATION;A1;0,000;Vida além da muralha;Jon Snow
-2014;IJNS;INTERNATIONAL JOURNAL OF NEURAL SYSTEMS;A1;0,000;Participação política na terceira idade;Olenna Tyrell
-2013;IJHCS;INTERNATIONAL JOURNAL OF HUMAN-COMPUTER STUDIES (PRINT);A1;24,000;O que fazer após seu marido ser morto por um javali?;Cersei Lannister
-2013;TEC;IEEE TRANSACTIONS ON EVOLUTIONARY COMPUTATION;A1;0,000;Como ser bem sucedido no mercado de cebolas;Davos Seaworth
-2016;SSCAD;Simpósio em Sistemas Computacionais de Alto Desempenho;B1;0,000;Workshop: A arte de fazer tortas;Arya Stark
-2016;SSM;SOFTWARE AND SYSTEMS MODELING;B1;1,497;Caminhantes Brancos: Como combate-los;Jon Snow
-2014;SSM;SOFTWARE AND SYSTEMS MODELING;B1;1,497;Por que incesto ainda é mal visto em 2014;Jaime Lannister,Cersei Lannister
-2013;APPLD;APPLIED ARTIFICIAL INTELLIGENCE;B1;74,000;Como não ter vergonha de ser alfabetizado por uma criança;Davos Seaworth
-2013;SSCAD;Simpósio em Sistemas Computacionais de Alto Desempenho;B1;0,000;Unburnt: Como brincar com fogo e não se queimar;Daenerys Targaryen
-2015;SBRCSD;Simpósio Brasileiro de Redes de Computadores e Sistemas Distribuídos;B2;0,000;Fogo vivo e seu uso como defesa a um cerco naval;Tyrion Lannister,Jaime Lannister,Cersei Lannister
-2013;ICHSI;International Conference on Human System Interactions;B2;0,000;Como visitar uma cidade amiga e torná-la inimiga;Tyrion Lannister,Jaime Lannister,Cersei Lannister
-2016;IWSC;IEEE International Workshop on Software Cybernetics;B3;15,000;Voltando para casa após o exílio;Tyrion Lannister,Daenerys Targaryen,Sansa Stark,Arya Stark
-2015;IWSC;IEEE International Workshop on Software Cybernetics;B3;15,000;Recuperando o que é seu por direito: Uma introdução ao Senhor da Luz;Stannis Baratheon
-2015;IWSC;IEEE International Workshop on Software Cybernetics;B3;15,000;Vida após a morte: Testemunho de um ex-morto;Jon Snow,Davos Seaworth
-2014;ICDSMP;International Conference on Data Stream Mining & Processing;B3;7,000;Meu atual inimigo é meu futuro amigo;Tyrion Lannister
-2013;CSBC;Congresso da Sociedade Brasileira de Computação;B3;0,000;Como criar filhotes de lobo gigante;Arya Stark,Sansa Stark,Jon Snow
-2014;LARS;Latin American Robotics Symposium;B4;0,000;Como lidar com um dedo mindinho influente;Sansa Stark
-2015;RBCA;REVISTA BRASILEIRA DE COMPUTAÇÃO APLICADA;B5;40,000;Consequências do fanatismo religioso na vida de uma família;Stannis Baratheon
-2014;RBCA;REVISTA BRASILEIRA DE COMPUTAÇÃO APLICADA;B5;40,000;Como enfrentar um motim de seus subordinados;Jon Snow,Davos Seaworth
-2014;RBRCSD;REVISTA BRASILEIRA DE REDES DE COMPUTADORES E SISTEMAS DISTRIBUÍDOS;B5;12,000;Como perceber que uma relação é abusiva;Sansa Stark
-2016;SBPO;Simpósio Brasileiro de Pesquisa Operacional;C;0,000;Porque se vingar dos assassinos de seus familiares não é saudável;Arya Stark,Daenerys Targaryen,Olenna Tyrell
-2016;SBTPS;Simpósio Brasileiro de Telecomunicações e Processamento de Sinais;C;0,000;Como treinar seu dragão?;Daenerys Targaryen
-2015;IJERD;INTERNATIONAL JOURNAL OF ENGINEERING RESEARCH AND DEVELOPMENT;C;0,000;A arte do disfarce: como trocar de rosto temporariamente;Arya Stark
-2015;IJERD;INTERNATIONAL JOURNAL OF ENGINEERING RESEARCH AND DEVELOPMENT;C;0,000;Vida após amputação: Como voltar a ter uma vida normal;Jaime Lannister
-2015;RSIFSMA;REVISTA DE SISTEMA DE INFORMAÇÃO DA FSMA;C;22,000;O que fazer quando sua família é quase extinta?;Olenna Tyrell
-2015;SBPO;Simpósio Brasileiro de Pesquisa Operacional;C;0,000;Chain Brakers: Recuperando a vida de inocentes;Tyrion Lannister,Daenerys Targaryen
-2013;ITW;IEEE Information Theory Workshop;C;0,000;De vendedor de cebolas a conselheiro do Rei;Stannis Baratheon,Davos Seaworth
+2016;Capricho;Capricho;A1;23,000;Bia: Por que veio de batom?;Gabriel Rezende
+2016;Elle;Elle;A1;435,000;Morfeu: será sono ou preguiça?;Luiz Otavio Costa
+2015;tkiki;tkiki;A1;12,000;Como não reprovar em calculo: um estudo de caso;Luiz Otavio Costa,Docinho,Florzinha
+2014;Capricho;Capricho;A1;23,000;Teoria da fisica molecular;Beatriz Ogioni
+2014;EUEW;EUEW;A1;0,000;Harry Potter: Drama ou será mesmo o Eleito?;Beatriz Ogioni
+2013;Capricho;Capricho;A1;23,000;Barbie: Revolução feminista ou modelo de anorexia?;Beatriz Ogioni
+2013;Capricho;Capricho;A1;23,000;Vidro: solido ou liquido? A pergunta que revolta gerações;Luiz Otavio Costa
+2015;MASC;Magias amigas sem ciumes;A2;32,000;Será que joão do santo cristo realmente não tinha medo?;Gabriel Rezende
+2013;LCAD;Lugar de carros atropeladores demais;A2;31,000;A revolução das galinhas está próxima?;Florzinha
+2013;qeqw;que eu quero w;A2;11,000;Computacao quantica: Magia ou tecnologia;Antonio Evaristo
+2016;NEMO;Nucleo educacional monetario otimizado;B2;12,000;Como identar bem seus codigos;Luiz Otavio Costa
+2015;qwrer;qwrer;B2;3,000;Como conquistar os boys;Lindinha,Docinho,Florzinha
+2014;Magasin;Magasin;B2;0,000;Silicone: melhor idade para colocar.;Felipe Branquinho
+2014;NEMO;Nucleo educacional monetario otimizado;B2;12,000;Mafagafinhos. Mito ou verdade?;Luiz Otavio Costa,Beatriz Ogioni,Florzinha
+2014;NEMO;Nucleo educacional monetario otimizado;B2;12,000;Ovo com batata antes de dormir: Faz bem?;Lindinha,Gabriel Rezende,Felipe Branquinho
+2014;SAPAO;SAPAO;B2;13,000;Java é da hora;Lindinha,Luiz Otavio Costa,Florzinha
+2013;NEMO;Nucleo educacional monetario otimizado;B2;12,000;Você Imagina Tudo Ou Realiza? Livre-se Imediatamente da Negação Demasiada do Objeto;Luiz Otavio Costa
+2015;OXFORS;OXFORS;B3;456,000;Batatas: amigas ou comida?;Geraldo Otavio,Luiz Otavio Costa,Beatriz Ogioni
+2014;LNDO;Lugar nacinal dos Onitorrincos;B3;54,000;Como saber se o boy é sapão ou embuste;Lindinha,Docinho,Florzinha
+2013;TEP;TEP;B3;43,000;Netflix: cade o Sense8?;Luiz Otavio Costa
+2016;Diga dinheiro;Nao diga alou, diga dinheiro;B4;243,000;Pilula vermelha ou pílula azul. As teorias de Matrix;Florzinha
+2016;Diga dinheiro;Nao diga alou, diga dinheiro;B4;243,000;Porque o rato roeu a roupa do rei de roma?;Antonio Evaristo
+2015;Vogue;Vogue;B5;43,000;Boys de aquario: seriam embustes?;Gabriel Rezende
+2013;Vogue;Vogue;B5;43,000;Como ir bem nas materias;Florzinha
+2016;Galileu;Galileu;C;234,000;Cavalo fantasma: Mito ou verdade?;Lindinha,Docinho,Florzinha
+2016;Galileu;Galileu;C;234,000;Sala precisa: precisa ou necessaria?;Lindinha,Luiz Otavio Costa,Florzinha
+2016;Peixonaltas;Peixonaltas;C;23,000;Andar traquilamente na favela onde eu nasci: eu só quero ser feliz?;Geraldo Otavio
+2015;Galileu;Galileu;C;234,000;Teoria fisica das moleculas;Luiz Otavio Costa
+2015;Galileu;Galileu;C;234,000;Text: Cafageste?;Geraldo Otavio
+2015;Peixonaltas;Peixonaltas;C;23,000;Peixes: amigos ou comida?;Lindinha,Beatriz Ogioni,Florzinha

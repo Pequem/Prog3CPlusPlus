@@ -1,34 +1,31 @@
-Ano;Veiculo;Título;Autores;Número;Volume;Local;Página Inicial;Página Final
-2013;AI;Auto de Titulo Louco;1234567891234567;10;;Madagascar;10;15
-2013;AI;Quase um Titulo Bem Louco;1234567891234567,3216549876543214,4838222353239158,8373746511245324;11;;Madagascar;19;24
-2013;AI;Ai Titulo Louco;1234567891234567,1597513245153515,4838222353239158,8373746511245324;12;;Moscou;30;45
-2013;CAT;Tecnologia Relacionado ao Trabalho;3216549876543214,4838222353239158,8373746511245324;7;;Roma;2;5
-2013;CAT;Como Sobreviver ao Trabalho;3216549876543214,1519481123854198,4838222353239158;4;;Roma;7;10
-2013;CAT;Como Se Realacionar no Trabalho;3216549876543214,8811324859129152;15;;Roma;15;23
-2013;CAEPF;Cadastrando de Atividades;1597513245153515,4838222353239158,8373746511245324;1;;Paris;5;10
-2013;CAEPF;Cadastrando e Aprendendo Bastante;1597513245153515,4838222353239158,8481354912958741,8373746511245324;1;;Paris;15;25
-2013;CEIP;Sempre colocando INSS no lugar de ISSN;1519481123854198,4838222353239158;2;;Vitoria;200;215
-2013;CCB;Titulo Legal Para Código Civil Brasileiro;8811324859129152,8373746511245324;3;1;;152;170
-2013;CCB;Another crazy title for Código Civil Brasileiro;8811324859129152,8481354912958741,8373746511245324;2;1;;100;130
-2013;CF;How to make a good Constituição Federal;8481354912958741,4838222353239158,8373746511245324;2;1;;5;45;
-2013;CND;Puting things in Certidão Negativa de Débito;8481354912958741;5;;Cariacica;10;78
-2014;CNI;How to advise the Conselho Nacional de Imigração;1519481123854198;5;5;;845;900
-2014;CNIS;Introdução à Informações Sociais na cadeia;1519481123854198,3216549876543214,8373746511245324;2;;Cariacica;36;75
-2014;CNO;Doing an amazing Cadastro Nacional de Obras;1234567891234567,4838222353239158;4;;Serra;1;45
-2014;CNO;Towards A Legal Core on Cadastro Nacional de Obras;1234567891234567,8811324859129152,8373746511245324;2;;Serra;145;220
-2014;CNPJ;Making a nice Cadastro Nacional de Pessoa Jurídica;1234567891234567,4838222353239158,8373746511245324;5;;Moscou;15;70
-2014;CPF;Doing an strange method to Cadastro de Pessoa Física;8811324859129152,4838222353239158,3216549876543214,8373746511245324;4;;Cariacica;4;42
-2014;CTPS;How to get away without Carteira de Trabalho e Previdência Social;8481354912958741,4838222353239158;1;2;;45;90
-2014;ECB;What to do about the Emenda Constitucional;1519481123854198,8373746511245324,4838222353239158;2;;Madagascar;152;168
-2014;FATI;Reactions when you do not have a Fundo de Amparo ao Trabalhador;8481354912958741,4838222353239158;3;;Serra;3;50
-2015;FGTS;Misturando linguas e Garantia por Tempo de Serviço;1234567891234567;5;;Cariacica;4;65
-2015;FNDE;Various titulos misturados e Desenvolvimento Educacional;8481354912958741;2;5;;142;223
-2015;GFIP;Como conseguir o Recolhimento do FGTS e Informações à Previdência Social;1234567891234567;1;5;;652;700
-2015;GPS;Varios beneficius e Guia da Previdência Social;8481354912958741,8373746511245324,4838222353239158;1;;Fundão;6;52
-2015;INSS;Inicial maiscula em certos titulos e Seguro Social;8481354912958741;2;5;;141;170
-2015;IN;How to appear smart than you look on Instrução Normativa;1519481123854198,8373746511245324;7;;Serra;15;47
-2016;MANAD;I do not know what to say anymore Manual Normativo de Arquivos Digitais;1519481123854198,8373746511245324;4;;Vila Velha;12;40
-2016;NIS;Please help us e Número de Identificação Social;8811324859129152;5;;Vitoria;452;500
-2016;OGMO;We can not make it anymore fast analises;8811324859129152,8481354912958741,4838222353239158,8373746511245324;5;7;;650;751
-2016;FIS;How to perform a nice flip in the air;8811324859129152;4;;Guarapari;20;74
-2016;FIS;How to do a mitical flip in the air;3216549876543214,8373746511245324,1039485793847387,4838222353239158;1;;Cariacica;20;75
+Ano;Veículo;Título;Autores;Número;Volume;Local;Página Inicial;Página Final
+2014;Capricho;Teoria da fisica molecular;1234567891234213;31;13;;1;12
+2015;Galileu;Text: Cafageste?;2929492399429394;23;;Vitoria;43;123
+2013;qeqw;Computacao quantica: Magia ou tecnologia;3249822342374923;24;;Argentina;242;300
+2014;SAPAO;Java é da hora;2348235723495923, 2323423741273103, 8928329394823442;534;;Colombia;453;500
+2016;NEMO;Como identar bem seus codigos;2323423741273103;32;35;;4;17
+2015;Galileu;Teoria fisica das moleculas;2323423741273103;234;;Espirito santo;546;600
+2013;Vogue;Como ir bem nas materias;8928329394823442;99999;;Argeria;456;591
+2016;Capricho;Bia: Por que veio de batom?;3432456734589332;3453;45;;5;10
+2014;NEMO;Ovo com batata antes de dormir: Faz bem?;2348235723495923, 3432456734589332, 5463456345630454;34345;45;;546;600
+2015;Peixonaltas;Peixes: amigos ou comida?;2348235723495923, 1234567891234213, 8928329394823442;5245;;Vitoria;7;234
+2016;Galileu;Cavalo fantasma: Mito ou verdade? ;2348235723495923, 3243452456456345, 8928329394823442;3;;Paris;56;234
+2013;Capricho;Barbie: Revolução feminista ou modelo de anorexia?;1234567891234213;7656;56;;34532;53453
+2016;Diga dinheiro;Porque o rato roeu a roupa do rei de roma?;3249822342374923;567;767;;4;32
+2015;tkiki;Como não reprovar em calculo: um estudo de caso;2323423741273103, 3243452456456345, 8928329394823442;536;8;;3453;4123
+2014;NEMO;Mafagafinhos. Mito ou verdade?;2323423741273103, 1234567891234213, 8928329394823442;43435;78;;45;234
+2013;LCAD;A revolução das galinhas está próxima?;8928329394823442;56;;Olinda;345;2342
+2016;Diga dinheiro;Pilula vermelha ou pílula azul. As teorias de Matrix ;8928329394823442;74;78;;645;5433
+2016;Elle;Morfeu: será sono ou preguiça?;2323423741273103;6;9;;8;70
+2015;OXFORS;Batatas: amigas ou comida?;2929492399429394, 2323423741273103, 1234567891234213;7;790;;78;234
+2013;NEMO;Você Imagina Tudo Ou Realiza? Livre-se Imediatamente da Negação Demasiada do Objeto;2323423741273103;467;23;;75;523
+2015;qwrer;Como conquistar os boys ;2348235723495923, 3243452456456345, 8928329394823442;45645;4;;79;234
+2014;Magasin;Silicone: melhor idade para colocar.;5463456345630454;13;;Londres;78;234
+2015;Vogue;Boys de aquario: seriam embustes?;3432456734589332;56;;Nova York;97;232
+2013;TEP ;Netflix: cade o Sense8?;2323423741273103;356;;Argentina;8;23
+2016;Galileu;Sala precisa: precisa ou necessaria?;2348235723495923, 2323423741273103, 8928329394823442;34;;Grenoble;768;5235
+2014;EUEW;Harry Potter: Drama ou será mesmo o Eleito?;1234567891234213;5656;46;;978;2355
+2013;Capricho;Vidro: solido ou liquido? A pergunta que revolta gerações;2323423741273103;542;56;;67;122
+2016;Peixonaltas;Andar traquilamente na favela onde eu nasci: eu só quero ser feliz?;2929492399429394;45;;Londres;897;3234
+2015;MASC;Será que joão do santo cristo realmente não tinha medo?;3432456734589332;756;;Grenoble;89;223
+2014;LNDO;Como saber se o boy é sapão ou embuste;2348235723495923, 3243452456456345, 8928329394823442;777;;Nova York;678;2341
