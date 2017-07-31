@@ -19,7 +19,8 @@
 #include "Publicacao.h"
 namespace model {
     using namespace std;
-    class Qualis {
+     class Qualis {
+
     public:
 		Qualis();
         Qualis(string nome);

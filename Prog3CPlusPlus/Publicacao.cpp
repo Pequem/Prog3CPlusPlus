@@ -41,12 +41,13 @@ namespace model {
 		Qualificacao *q = this->veiculo->getQualificacoes()[0];
 		for (Qualificacao *_q : this->veiculo->getQualificacoes()) {
 			if (q->getAno() < _q->getAno()) q = _q;
-		}
+		
 		if (this->veiculo->getTipo().compare(string("P")) == 0) {
 			pontuacao += (regras->getFatorMult() * (regras->getPontuacoesRegraByQuali(q->getQuali())->getValor()));
 		}
 		else if (this->veiculo->getTipo().compare(string("C")) == 0){
 			pontuacao += regras->getPontuacoesRegraByQuali(q->getQuali())->getValor();
+		}
 		}
 
 		return pontuacao;

@@ -10,7 +10,7 @@
  * 
  * Created on 17 de Julho de 2017, 00:39
  */
-
+#include <iostream>
 #include "Regras.h"
 namespace model {
 	/*O contrutor de Regras recebe um fator multiplicador, uma data de inicio e uma data de fim,  quantos anos deve ser considerado
@@ -34,11 +34,15 @@ namespace model {
 	}
 	/*O método getPontuacoesRegraByQuali retorna a pontuação de acordo com o qualis*/
 	Pontuacao* Regras::getPontuacoesRegraByQuali(Qualis *q) {
+		
 		for (Pontuacao *p : this->pontuacoesRegras) {
 			if (p->getQuali()->getNome().compare(q->getNome()) == 0) {
 				return p;
 			}
+			
 		}
+		
+		//std::cout << "What the FUCK";
 	}
 	/*O método getPontMin retorna o valor da pontuação minima*/
 	int Regras::getPontMin() {

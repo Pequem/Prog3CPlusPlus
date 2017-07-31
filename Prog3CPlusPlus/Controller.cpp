@@ -27,6 +27,7 @@ Controller::Controller(string d, string v, string p, string q, string r, string 
 	string qualiVector[8] = { string("A1"), string("A2"), string("B1"), string("B2"), string("B3"), string("B4"), string("B5"), string("C") };
 	for (string s : qualiVector) {
 		qualis.insert(pair<string, Qualis*>(s, new Qualis(s)));
+		pont2.insert(pont2.end(),new Pontuacao(0,new Qualis(s)));
 	}
 	
 	readDocentes(d);
@@ -215,10 +216,14 @@ void Controller::readRegras(string r) {
 	t = new Tokenizer(token.at(2), ',');
 	token1 = t->remaining();
 	delete(t);
+	
+	
+
 	for (string &t1 : token1) {
 		trim(t1);
 		Pontuacao *p = new Pontuacao(0, qualis.find(t1)->second);
 		pontuacoes.insert(pontuacoes.end(), p);
+		
 	}
 	t = new Tokenizer(token.at(3), ',');
 	token1 = t->remaining();
@@ -226,9 +231,29 @@ void Controller::readRegras(string r) {
 	for (unsigned int _i = 0; _i < pontuacoes.size(); _i++) {
 		token1[_i] = trim(token1[_i]);
 		pontuacoes[_i]->setValor(atoi(token1[_i].data()));
+		
+		
 	}
+
+	//compara os valores de pontuação e associa ao intervalo obtido
+	for (unsigned int _i = 0; _i < pont2.size(); _i++) {
+
+		for (unsigned int _j = 0; _j < pontuacoes.size(); _j++){
+		if(pont2[_i]->getQuali()->getNome().compare(pontuacoes[_j]->getQuali()->getNome()) == 0){
+			for (unsigned int _k = _i; _k < pont2.size(); _k++){
+				pont2[_k]->setValor(pontuacoes[_j]->getValor());
+			}
+		}
+		}
+		
+	}
+
+
+
+
+
 	if (!(validDate(token.at(0), DATE_FORMAT_PT_BR_SHORT) && validDate(token.at(1), DATE_FORMAT_PT_BR_SHORT))) throw CustomException("Erro de formatação");
-	this->regras = new Regras(atof(token.at(4).data()), parseDate(token.at(0), DATE_FORMAT_PT_BR_SHORT), parseDate(token.at(1), DATE_FORMAT_PT_BR_SHORT), atoi(token.at(5).data()), atoi(token.at(6).data()), pontuacoes);
+	this->regras = new Regras(atof(token.at(4).data()), parseDate(token.at(0), DATE_FORMAT_PT_BR_SHORT), parseDate(token.at(1), DATE_FORMAT_PT_BR_SHORT), atoi(token.at(5).data()), atoi(token.at(6).data()), pont2);
 	in.close();
 }
 

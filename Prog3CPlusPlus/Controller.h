@@ -40,6 +40,7 @@ private:
     map<long long,Docente*> docentes;
 	map<string, Veiculo*> veiculos;
 	vector<Publicacao*> publicacoes;
+vector<Pontuacao*> pont2;
 	map<string,Qualis*> qualis;
 	vector<Qualificacao*> qualificacoes;
 	Regras* regras;
