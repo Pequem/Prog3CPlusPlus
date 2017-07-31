@@ -71,7 +71,7 @@ void Controller::readDocentes(string d){
 		for (string &t1: token) {
 			trim(t1);
 		}
-		if (docentes.count(atoll(token.at(0).data()) > 0)) throw CustomException("Código repetido para docente: " + atoll(token.at(4).data()));
+		if (docentes.count(atoll(token.at(0).data()))> 0 ) throw CustomException("Código repetido para docente: " + token.at(0) + ".");
 		if (!(validDate(token.at(2), DATE_FORMAT_PT_BR_SHORT) && validDate(token.at(3), DATE_FORMAT_PT_BR_SHORT))) throw CustomException("Erro de formatação");
 		docentes.insert(pair<long long, Docente*>(atoll(token.at(0).data()), new Docente(atoll(token.at(0).data()), token.at(1), parseDate(token.at(2), DATE_FORMAT_PT_BR_SHORT), parseDate(token.at(3), DATE_FORMAT_PT_BR_SHORT), token.at(4).compare("X") == 0 )));
     }
@@ -99,11 +99,11 @@ void Controller::readVeiculos(string v) {
 		for (string &t1 : token) {
 			trim(t1);
 		}
-		if (veiculos.count(token.at(0)) > 0) throw CustomException("Código repetido para veículo: " + token.at(0));
+		if (veiculos.count(token.at(0)) > 0) throw CustomException("Código repetido para veículo: " + token.at(0) + ".");
 		if ((token.at(2).compare("C") == 0) || (token.at(2).compare("P") == 0)) {
 			veiculos.insert(pair<string, Veiculo*>(token.at(0), new Veiculo(token.at(0), token.at(1), token.at(2) , parseDouble(token.at(3), LOCALE_PT_BR), token.at(4))));
 		}else {
-			throw CustomException("Tipo de veículo desconhecido para veículo " + token.at(0) + ": " + token.at(2));
+			throw CustomException("Tipo de veículo desconhecido para veículo " + token.at(0) + ": " + token.at(2) + ".");
 		}
 	}
 	in.close();
@@ -139,11 +139,11 @@ void Controller::readPublicacoes(string p) {
 		}
 		vector<Docente*> autores;
 		for (string autor : tokenAutores) {
-			if (docentes.count(atoll(autor.data())) == 0) throw CustomException("Código de docente não definido usado na publicação \"" + token.at(2) + "\": " + autor);
+			if (docentes.count(atoll(autor.data())) == 0) throw CustomException("Código de docente não definido usado na publicação \"" + token.at(2) + "\": " + autor + ".");
 			Docente *d1 = docentes.find(atoll(autor.data()))->second;
 			autores.insert(autores.end(), d1);
 		}
-		if (veiculos.count(token.at(1)) == 0) throw CustomException("Sigla de veículo não definida usada na publicação \"" + token.at(2) + "\": " + token.at(1));
+		if (veiculos.count(token.at(1)) == 0) throw CustomException("Sigla de veículo não definida usada na publicação \"" + token.at(2) + "\": " + token.at(1) + ".");
 		Veiculo *v = veiculos.at(token.at(1));
 
 		if (v->getTipo().compare(string("C")) == 0) {
@@ -181,8 +181,8 @@ void Controller::readQualificacoes(string q) {
 		for (string &t1 : token) {
 			trim(t1);
 		}
-		if (qualis.count(token.at(2)) == 0) throw CustomException("Qualis desconhecido para qualificação do veículo " + token.at(1) + " no ano " + token.at(0) + ": " + token.at(2));
-		if (veiculos.count(token.at(1)) == 0) throw CustomException("Sigla de veículo não definida usada na qualificação do ano \"" + token.at(0) + "\": " + token.at(1));
+		if (qualis.count(token.at(2)) == 0) throw CustomException("Qualis desconhecido para qualificação do veículo " + token.at(1) + " no ano " + token.at(0) + ": " + token.at(2) + ".");
+		if (veiculos.count(token.at(1)) == 0) throw CustomException("Sigla de veículo não definida usada na qualificação do ano \"" + token.at(0) + "\": " + token.at(1) + ".");
 		Veiculo *v = veiculos.find(token.at(1))->second;
 		Qualificacao *q = new Qualificacao(atoi(token.at(0).data()), v, qualis.find(token.at(2))->second);
 		v->setQualificacao(q);
@@ -221,6 +221,7 @@ void Controller::readRegras(string r) {
 
 	for (string &t1 : token1) {
 		trim(t1);
+		if(qualis.count(t1) == 0) throw CustomException("Qualis desconhecido para regras de "+ token.at(0) + ": " + t1);
 		Pontuacao *p = new Pontuacao(0, qualis.find(t1)->second);
 		pontuacoes.insert(pontuacoes.end(), p);
 		
