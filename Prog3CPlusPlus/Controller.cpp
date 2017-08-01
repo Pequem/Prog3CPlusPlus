@@ -48,6 +48,16 @@ Controller::~Controller() {
 	for (Publicacao *p : publicacoes) {
 		delete(p);
 	}
+	for (Pontuacao *po : pont2) {
+		delete(po);
+	}
+	for (Pontuacao *q : qualificacoes) {
+		delete(q);
+	}
+
+	delete(regras);
+
+	
 }
 /*O metodo readDocentes recebe como parametro o arquivo docentes.csv e verifica se há um arquivo caso não seja valido ele joga um erro, caso sim, é lido
 linha por linha e é usado o Tokenizer do cpp_util fornecido pelo professor. Enquanto o arquivo está sendo lido está sendo feito um parse e adicionando em 
